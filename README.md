@@ -8,7 +8,8 @@ The purpose of this project is to design and implement a novel storage de-duplic
 ## 1.   Vision and Goals Of The Project:
 
 The final product of this project will be a de-duplication service that leverages application-aware semantic-equivalence to identify duplicate data at storage system and avoids redundant invocation of functions on servers. Main goals include:
-
+* Define and implement specialized data curation techniques 
+* Optimize de-duplication data structure and indexing
 * Perform data and event de-duplication to avoid redundant execution of stateless functions
 
 
