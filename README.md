@@ -2,10 +2,15 @@
 
 ## Deduplicating-Cloud-functions Project Proposal
 
-The purpose of this project is to design and implement a novel storage de-duplication  framework  for  serverless  platform  that  not only performs data de-duplication but also de-duplicates events  to  avoid  redundant  execution  of  stateless  functions in order to improve  overall  throughput  of  the platform.
+The purpose of this project is to design and implement a novel storage de-duplication framework for serverless platform in order to improve overall throughput of the platform.
 ** **
 
 ## 1.   Vision and Goals Of The Project:
+
+The final product of this project will be a de-duplication service that leverages application-aware semantic-equivalence to identify duplicate data at storage system and avoids redundant invocation of functions on servers. Main goals include:
+
+* Perform data and event de-duplication to avoid redundant execution of stateless functions
+
 
 The vision section describes the final desired state of the project once the project is complete. It also specifies the key goals of the project. This section provides a context for decision-making. A shared vision among all team members can help ensuring that the solution meets the intended goals. A solid vision clarifies perspective and facilitates decision-making.
 
