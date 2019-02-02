@@ -2,10 +2,40 @@
 
 ## Deduplicating-Cloud-functions Project Proposal
 
-The purpose of this project is to design and implement a novel storage de-duplication framework for serverless platform in order to improve overall throughput of the platform.
+The purpose of this project is to design and implement a novel storage de-duplication framework for serverless platform. The primary objective of this deduplication system would be to avoid redundant execution of functions on the servers and improve overall throughput of the platform.
 ** **
 
 ## 1.   Vision and Goals Of The Project:
+The goals of this project are:
+1. Survey and Learning:
+1a. Familarize ourselves with serverless technology
+1b. Get detail understanding on the internal working of standard open serverless framework, viz. openwhish (link)
+1c. Learn about storage deduplication techniques
+1d. Read literature/papers on existing deduplication techniques addressing similar problems.
+
+2. Design and Implementation:
+2a. Design a storage deduplication system for one of the open sourced cloud object storage (aka COS) (preferably Minio (link))
+2b. Design a new event management and function invocation framework for COS
+2c. Implement a function deduplication system
+
+NOTE: Ideally, we would like to implement storage deduplication for one of the storage backend supported by openwhisk and integrate function deduplication logic into openwhisk. But, given the time constraints we would prioritize this work in two phases and would extend the scope of the project for Openwhisk integration later.
+
+3. Evaluation:
+3a. Evaluate different storage deduplication and indexing techniques (in-memory databases, key-value stores, relational databases)
+3b. Evaluate performance savings of the system on different dimensions:
+ 3ba. Savings in avoiding function (container) invocations
+ 3bb. Savings in time to execute the function 
+ 3bc. Savings in time accessing duplicate data from COS
+ 
+4. Strech Goals:
+4a. Integrate and contribute our code to openwhisk
+4b. Write a paper on this work for international conferences/workshops
+
+5. Non-technical Goals:
+5a. Follow standard Developmenent pratices with Git operations
+5b. <Add some practices you are planning to use, like issue tracking, project milestones etc.>
+
+
 
 The final product of this project will be a de-duplication service that leverages application-aware semantic-equivalence to identify duplicate data at storage system and avoids redundant invocation of functions on servers. Main goals include:
 * Define and implement specialized data curation techniques 
