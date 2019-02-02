@@ -65,13 +65,10 @@ Scale this to a distributed platform
 
 ## 6.  Release Planning:
 
-Release planning section describes how the project will deliver incremental sets of features and functions in a series of releases to completion. Identification of user stories associated with iterations that will ease/guide sprint planning sessions is encouraged. Higher level details for the first iteration is expected.
+(Temporary plan)
 
-** **
+Sprint 1: 
 
-For more help on markdown, see
-https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+Familiarizing ourselves with the existing OpenWhisk architecture and how it will be integrated with MOC.
+Getting insights into the existing prototype developed by the mentor.
 
-In particular, you can add images like this (clone the repository to see details):
-
-![alt text](https://github.com/BU-NU-CLOUD-SP18/sample-project/raw/master/cloud.png "Hover text")
