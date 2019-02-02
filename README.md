@@ -57,7 +57,11 @@ The picture shows the overall architecture for Sanity System.
 
 ## 5. Acceptance criteria
 
-This section discusses the minimum acceptance criteria at the end of the project and stretch goals.
+Minimum acceptance criteria is to prevent data duplication which in turn would prevent event duplication. 
+
+The stretch goals are:
+
+Scale this to a distributed platform
 
 ## 6.  Release Planning:
 
