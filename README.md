@@ -31,15 +31,20 @@ The Scope places a boundary around the solution by detailing the range of featur
 
 This section provides a high-level outline of the solution.
 
+
 Global Architectural Structure Of the Project:
 
-This section provides a high-level architecture or a conceptual diagram showing the scope of the solution. If wireframes or visuals have already been done, this section could also be used to show how the intended solution will look. This section also provides a walkthrough explanation of the architectural structure.
-
- 
+This section provides a high-level architecture or a conceptual diagram showing the scope of the solution. If wireframes or visuals have already been done, this section could also be used to show how the intended solution will look. This section also provides a walkthrough explanation of the architectural structure. 
 
 Design Implications and Discussion:
 
-This section discusses the implications and reasons of the design decisions made during the global architecture design.
+The picture shows the overall architecture for Sanity System. 
+![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/arch.PNG)
+* **Data Storage** has the actual data from the multiple live running containers without any annotations or filtering.
+* **Data Curation** filters each data event using either POV/filter based duplication. Then, it checks the checksum for each incoming data.
+* **Sanity Controller** indexes each event into the hashmap which identifies if the event is duplicate for a function. If the event is duplicate, it gets the output reference for the result from the earlier invocation.
+* **Function Rule Map** stores the rules to associate data events with respective functions.
+* **Function dupMap** maintains checksum of all unique input data processed by each function 
 
 ## 5. Acceptance criteria
 
