@@ -32,7 +32,29 @@ This framework will be used by researchers from BU, MIT, NEU, Harvard ,UMass and
 
 ## 3.   Scope and Features Of The Project:
 
-The Scope places a boundary around the solution by detailing the range of features and functions of the project. This section helps to clarify the solution scope and can explicitly state what will not be delivered as well.
+**What will be delivered?**
+
+* Presents a faster framework for cloud providers: 
+
+  * For providers who mostly deal with data generated from external end-points like IoT devices, cloud systems monitors, weather sensors, social media, mobile devices, etc
+
+  * By avoiding container startup latency: Since most platforms execute stateless functions inside containers, eliminating redundant activation of functions results in low latency.
+
+*  Presents a framework for increasing “performance/cost” for end-users: 
+
+    * End-users will use this framework indirectly which will, in turn, decrease the application cost for them since this framework increases throughput.
+
+    * Availability to increase throughput more by offering user to define PoVs: PoVs(Point of Variability) are parts of the data that is not important for the execution and should be ignored such as metadata. Availability of letting user choose those points allows a more fine-grained de-duplication.
+
+* Scalability: This novel storage de-duplication framework is designed and will be implemented for serverless execution model which in principle is flexible regarding scaling. An application can be scaled automatically or by adjusting its capacity through toggling the units of consumption.
+
+* Security: Security can be ensured by writing secure application code and tight access control over source code. 
+
+**What will not be delivered?**
+
+* This framework does not help save storage space since for every new data coming original data is stored multiple times.
+
+* This system can only be implemented on storage closed-loop functions, which takes data from data storage and writes the result again to the data storage. However, external stimuli functions are not the part of this de-duplication design because they take their data from storage but then trigger external events.
 
 ** **
 
@@ -70,5 +92,6 @@ Scale this to a distributed platform
 Sprint 1: 
 
 Familiarizing ourselves with the existing OpenWhisk architecture and how it will be integrated with MOC.
+
 Getting insights into the existing prototype developed by the mentor.
 
