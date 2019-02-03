@@ -2,16 +2,38 @@
 
 ## Deduplicating-Cloud-functions Project Proposal
 
-The purpose of this project is to design and implement a novel storage de-duplication framework for serverless platform in order to improve overall throughput of the platform.
+The purpose of this project is to design and implement a novel storage de-duplication framework for serverless platform. The primary objective of this deduplication system would be to avoid redundant execution of functions on the servers and improve overall throughput of the platform.
 ** **
 
 ## 1.   Vision and Goals Of The Project:
 
-The final product of this project will be a de-duplication service that leverages application-aware semantic-equivalence to identify duplicate data at storage system and avoids redundant invocation of functions on servers. Main goals include:
-* Define and implement specialized data curation techniques 
-* Optimize de-duplication data structure and indexing
-* Perform data and event de-duplication to avoid redundant execution of stateless functions
+The goals of this project are:
 
+**1. Survey and Learning:**
+  * Familarize ourselves with Serverless Technology
+  * Get detail understanding on the internal working of standard open serverless framework, viz. [openwhisk](https://openwhisk.apache.org/)
+  * Learn about storage deduplication techniques
+  * Read literature/papers on existing deduplication techniques addressing similar problems
+
+**2. Design and Implementation:**
+  * Design a storage deduplication system for one of the open sourced cloud object storage (aka COS) [minio](https://www.minio.io/)
+  * Design a new event management and function invocation framework for COS
+  * Implement a function deduplication system
+  
+**3. Evaluation:**
+  * Evaluate different storage deduplication and indexing techniques (in-memory databases, key-value stores, relational databases)
+    * Evaluate performance savings of the system on different dimensions:
+  * Savings in avoiding function (container) invocations
+    * Savings in time to execute the function 
+    * Savings in time accessing duplicate data from COS
+
+**4. Stretch Goals:**
+  * Integrate and contribute our code to openwhisk
+  * Write a paper on this work for international conferences/workshops
+
+**5. Non-technical Goals:8**
+  * Follow standard Developmenent pratices with Git operations
+  * <Add some practices you are planning to use, like issue tracking, project milestones etc.>
 ## 2. Users/Personas Of The Project:
 
 This section describes the principal user roles of the project together with the key characteristics of these roles. This information will inform the design and the user scenarios. A complete set of roles helps in ensuring that high-level requirements can be identified in the product backlog.
