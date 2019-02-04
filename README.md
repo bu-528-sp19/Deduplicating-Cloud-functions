@@ -31,9 +31,8 @@ The goals of this project are:
   * Integrate and contribute our code to openwhisk
   * Write a paper on this work for international conferences/workshops
 
-**5. Non-technical Goals:8**
+**5. Non-technical Goals:**
   * Follow standard Developmenent pratices with Git operations
-  * <Add some practices you are planning to use, like issue tracking, project milestones etc.>
 ## 2. Users/Personas Of The Project:
 
 This section describes the principal user roles of the project together with the key characteristics of these roles. This information will inform the design and the user scenarios. A complete set of roles helps in ensuring that high-level requirements can be identified in the product backlog.
