@@ -87,7 +87,15 @@ This section provides a high-level outline of the solution.
 
 Global Architectural Structure Of the Project:
 
-This section provides a high-level architecture or a conceptual diagram showing the scope of the solution. If wireframes or visuals have already been done, this section could also be used to show how the intended solution will look. This section also provides a walkthrough explanation of the architectural structure. 
+Our objective for the project is to demonstrate the efficiency in performing function deduplication by deduplicating data. Ideally, we would implement such deduplication inside existing open serverless framework like openwhisk, but given time constraint we will implement a POC, where we will build these dedup components *on-top of* openwhisk instead of inside openwhisk. So essentially, users now will interact with our layer instead of interacting with openwhisk directly.
+
+ 1. Users will register their data sources (IoT, System logs, etc.) to our service (sanity)
+ 2. Users will register their functions that they want to execute for their data events
+ 3. Sanity controller components
+    * **Cloud Object Store** : We will use minio which is open source
+    * **Message/Event Buffer**: We will use kafka
+    * **Deduplication controller**: We will maintain data dedup index
+    * **Function controller**: That decides whether data if unique and needs to be invoked on openwhisk or it is duplicate and we can           avoid invoking it 
 
 Design Implications and Discussion:
 
