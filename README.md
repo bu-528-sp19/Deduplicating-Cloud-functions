@@ -118,15 +118,19 @@ Minimum acceptance criteria is to prevent data duplication which in turn would p
 
 The stretch goals are:
 
-Scale this to a distributed platform
+  * Integrate and contribute our code to openwhisk
+  * Write a paper on this work for international conferences/workshops
+
 
 ## 6.  Release Planning:
 
-(Temporary plan)
-
 Sprint 1: 
 
-Familiarizing ourselves with the existing OpenWhisk architecture and how it will be integrated with MOC.
-
-Getting insights into the existing prototype developed by the mentor.
-
+  * Familarize ourselves with Serverless Technology
+  * Get detail understanding on the internal working of standard open serverless framework, viz. [openwhisk](https://openwhisk.apache.org/)
+  * Learn about storage deduplication techniques
+  * Read literature/papers on existing deduplication techniques addressing similar problems
+  
+Sprint 2:
+  * Set up Kafka, Minio and other relevant features by implemeting a use case.
+  * Start working towards Sanity Controller
