@@ -40,15 +40,15 @@ This section describes the principal user roles of the project together with the
 
 This framework will be used by researchers from BU, MIT, NEU, Harvard ,UMass and the paying users of MOC(economic save).
 
-  **It does not target:**
-  
-    MOC admin users, who will work against the command line.
-    Administrators of cloud services, who will continue to use the services of serverless functions.
+**It does not target:**
 
-  **It targets :**
-  
-    The openwhisk platform on MOC
-    End users who just submits the stateless functions for executions without worrying internal details as it saves them money by saving     the functions calls in an instance.
+   * MOC admin users, who will work against the command line.
+   * Administrators of cloud services, who will continue to use the services of serverless functions.
+
+**It targets :**
+
+   * The openwhisk platform on MOC
+   * End users who just submits the stateless functions for executions without worrying internal details as it saves them money by            saving the functions calls in an instance.
 
 ** **
 
