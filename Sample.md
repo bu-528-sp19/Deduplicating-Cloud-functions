@@ -80,7 +80,7 @@ Serverless platforms mostly execute functions inside containers that are typical
 
 Serverless applications typically have data sources as IoT/sensor data, social media data, user activity data and system state monitoring data. Data generated from these sources are largely consistent, causing data duplication. For example, for the generic cases the boundaries for temperature is very tight and the degree value is mostly consistent for a specific location of the sensor. In this case, our system will be getting extensive amount of duplicate data during the day.
 
-In the light of the above facts and the distributed storage and server architecture in serverless systems, an opportunity arises to build a specialized data de-duplication service.
+In the light of the above facts and the distributed storage and server architecture in serverless systems, an opportunity arises to build a specialized data de-duplication service which will de-duplicate the cloud function invocations.
 
 ### Global Architectural Structure Of the Project:
 
