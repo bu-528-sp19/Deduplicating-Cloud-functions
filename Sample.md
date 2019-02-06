@@ -97,7 +97,8 @@ Ideally, we would implement such deduplication inside existing open serverless f
 ### De-duplicating architecture 
 |![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/architecture_diagram_1.PNG)|
 |:--:| 
-| *Space* |
+| *add caption here* |
+
 (add a caption)
 
 ### Pipleline of the reference architecture
