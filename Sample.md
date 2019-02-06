@@ -2,7 +2,7 @@
 
 ## Deduplicating-Cloud-functions 
 
-Data deduplication is useful for organizations dealing with highly redundant operations that requires constant copying and storing of data for future reference or recovery purpose. 
+Deduplication is useful for organizations dealing with highly redundant operations that requires constant copying and storing of data for future reference or recovery purpose. 
 
 The term is explained as an approach that eliminates duplicate copies of data from the system. For instance, a file that is backed up every week results in a lot of duplicate data and thus, eats up considerable disk space. Deduplication run an analysis and eliminates these sets of duplicate data and keeps only what is unique and essential, thus significantly clearing storage space. Here are some benefits of data deduplication for organizations.
 
