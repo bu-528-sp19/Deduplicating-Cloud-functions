@@ -156,4 +156,5 @@ Sprint 2:
 
  * What is Data deduplication and it's uses: 
  (http://blog.webwerks.in/cloud-hosting-blog/what-are-the-real-benefits-of-data-deduplication-in-cloud)
+ * Sanity: The Less Server Architecture for Cloud functions(http://niltonbila.com/pub/Nadgowda-WoSC17.pdf)
 
