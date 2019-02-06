@@ -28,8 +28,6 @@ The final product of this project will be a de-duplication service that leverage
   * Optimize de-duplication data structure and indexing
   * Perform data and event de-duplication to avoid redundant execution of stateless functions
   
-The vision section describes the final desired state of the project once the project is complete. It also specifies the key goals of the project. This section provides a context for decision-making. A shared vision among all team members can help ensuring that the solution meets the intended goals. A solid vision clarifies perspective and facilitates decision-making.
-
 
 ## 2. Users/Personas Of The Project:
 
