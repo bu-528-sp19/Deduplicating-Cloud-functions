@@ -19,10 +19,6 @@ The vision section describes the final desired state of the project once the pro
 
 ## 2. Users/Personas Of The Project:
 
-This section describes the principal user roles of the project together with the key characteristics of these roles. This information will inform the design and the user scenarios. A complete set of roles helps in ensuring that high-level requirements can be identified in the product backlog.
-
-This framework will be used by researchers from BU, MIT, NEU, Harvard, UMass and the paying users of MOC(economic save).
-
 **It does not target:**
 
    * MOC admin users, who will work against the command line.
@@ -30,7 +26,8 @@ This framework will be used by researchers from BU, MIT, NEU, Harvard, UMass and
 
 **It targets:**
 
-   * Cloud vendors who design their serverless build environement. This will execute stateless functions without worrying internal details as it saves them money by saving the functions calls in an instance.
+   * Cloud vendors who design their serverless build environement. This will execute stateless functions without worrying internal            details as it saves them money by saving the functions calls in an instance.
+   * Virtual desktop infrastructure (VDI) is another very good candidate for deduplication, because the duplicate data among desktops is      very high
 
 ** **
 
