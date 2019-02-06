@@ -27,6 +27,7 @@ The final product of this project will be a de-duplication service that leverage
   * Define and implement specialized data curation techniques
   * Optimize de-duplication data structure and indexing
   * Perform data and event de-duplication to avoid redundant execution of stateless functions
+  * Demonstrate the efficiency in performing function deduplication by deduplicating data
   
 
 ## 2. Users/Personas Of The Project:
@@ -73,31 +74,39 @@ The final product of this project will be a de-duplication service that leverage
 
 ## 4. Solution Concept
 
-This section provides a high-level outline of the solution.
+###Background & Motivation
 
+Serverless platforms mostly execute functions inside containers that are typically reused across multiple invocations of the same function to mask the container startup latency. However, state maintained locally by a function might not be available across invocations. In order to be scalable concerning the incoming events by design all serverless platforms implement stateless function semantics. These stateless functions can also be identified as idempotent which means they compute same result for duplicate data.
 
-Global Architectural Structure Of the Project:
+Serverless applications typically have data sources as IoT/sensor data, social media data, user activity data and system state monitoring data. Data generated from these sources are largely consistent, causing data duplication. For example, for the generic cases the boundaries for temperature is very tight and the degree value is mostly consistent for a specific location of the sensor. In this case, our system will be getting extensive amount of duplicate data during the day.
 
-Our objective for the project is to demonstrate the efficiency in performing function deduplication by deduplicating data. Ideally, we would implement such deduplication inside existing open serverless framework like OpenWhisk, but given time constraint we will implement a POC, where we will build these dedup components *on-top of* OpenWhisk instead of inside OpenWhisk. So essentially, users now will interact with our layer instead of interacting with OpenWhisk directly.
+In the light of the above facts and the distributed storage and server architecture in serverless systems, an opportunity arises to build a specialized data de-duplication service.
+
+###Global Architectural Structure Of the Project:
+
+Ideally, we would implement such deduplication inside existing open serverless framework like OpenWhisk(add link or ref), but given time constraint we will implement a POC, where we will build these dedup components *on-top of* OpenWhisk instead of inside OpenWhisk. So essentially, users now will interact with our layer instead of interacting with OpenWhisk directly.
 
  1. Users will register their data sources (IoT, System logs, etc.) to our service (sanity)
  2. Users will register their functions that they want to execute for their data events
  3. Sanity controller components
-    * **Cloud Object Store** : We will use minio which is open source
-    * **Message/Event Buffer**: We will use kafka
+    * **Cloud Object Store** : We will use minio which is open source (add a link to minio or reference)
+    * **Message/Event Buffer**: We will use kafka(add link or ref)
     * **Deduplication controller**: We will maintain data dedup index
     * **Function controller**: That decides whether data if unique and needs to be invoked on OpenWhisk or it is duplicate and we can           avoid invoking it 
 
 ### De-duplicating architecture 
 ![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/architecture_diagram_1.PNG)
+(add a caption)
 
 ### Pipleline of the reference architecture
 ![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/architecture_diagram_2.PNG)
+(add a caption)
 
 Design Implications and Discussion:
 
 The picture shows the overall architecture for Sanity System. 
 ![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/arch.PNG)
+(add caption and ref)
 * **Data Storage** has the actual data from the multiple live running containers without any annotations or filtering.
 * **Data Curation** filters each data event using either POV/filter based duplication. Then, it checks the checksum for each incoming data.
 * **Sanity Controller** indexes each event into the hashmap which identifies if the event is duplicate for a function. If the event is duplicate, it gets the output reference for the result from the earlier invocation.
