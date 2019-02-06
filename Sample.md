@@ -66,7 +66,7 @@ The final product of this project will be a de-duplication service that leverage
 
 **What will not be delivered?**
 
-* This framework does not help save storage space since for every new data coming original data is stored multiple times.
+* This framework does not help save storage space since for every new data coming original data is stored multiple times.(fix this or delete it)
 
 * This system can only be implemented on storage closed-loop functions, which takes data from data storage and writes the result again to the data storage. However, external stimuli functions are not the part of this de-duplication design because they take their data from storage but then trigger external events.
 
@@ -74,7 +74,7 @@ The final product of this project will be a de-duplication service that leverage
 
 ## 4. Solution Concept
 
-###Background & Motivation
+### Background & Motivation
 
 Serverless platforms mostly execute functions inside containers that are typically reused across multiple invocations of the same function to mask the container startup latency. However, state maintained locally by a function might not be available across invocations. In order to be scalable concerning the incoming events by design all serverless platforms implement stateless function semantics. These stateless functions can also be identified as idempotent which means they compute same result for duplicate data.
 
@@ -82,7 +82,7 @@ Serverless applications typically have data sources as IoT/sensor data, social m
 
 In the light of the above facts and the distributed storage and server architecture in serverless systems, an opportunity arises to build a specialized data de-duplication service.
 
-###Global Architectural Structure Of the Project:
+### Global Architectural Structure Of the Project:
 
 Ideally, we would implement such deduplication inside existing open serverless framework like OpenWhisk(add link or ref), but given time constraint we will implement a POC, where we will build these dedup components *on-top of* OpenWhisk instead of inside OpenWhisk. So essentially, users now will interact with our layer instead of interacting with OpenWhisk directly.
 
