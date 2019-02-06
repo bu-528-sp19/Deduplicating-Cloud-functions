@@ -14,7 +14,7 @@ The term is explained as an approach that eliminates duplicate copies of data fr
 
   * Cost-effective: As fewer disks are required, storage cost is reduced significantly. Besides, it also tends to improve disaster           recovery as lesser amount of data is transferred.
 
-With the massive data explosion, technologies that offers approaches to efficiently manage it is considered real attractive. Data deduplication is one such technology that assist with effectively managing storage devices as it enables efficient usage of data storage and network bandwidth.
+With the massive data explosion, technologies that offers approaches to efficiently manage it is considered real attractive.Deduplication is one such technology that assist with effectively managing storage devices as it enables efficient usage of data storage and network bandwidth.
 
 The purpose of this project is to design and implement a novel storage de-duplication framework for serverless platform in order to improve overall throughput of the platform.
 
