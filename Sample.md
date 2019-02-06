@@ -30,8 +30,7 @@ This framework will be used by researchers from BU, MIT, NEU, Harvard, UMass and
 
 **It targets:**
 
-   * The OpenWhisk platform on MOC
-   * End users who just submits the stateless functions for executions without worrying internal details as it saves them money by saving the functions calls in an instance.
+   * Cloud vendors who design their serverless build environement. This will execute stateless functions without worrying internal details as it saves them money by saving the functions calls in an instance.
 
 ** **
 
