@@ -97,18 +97,22 @@ Ideally, we would implement such deduplication inside existing open serverless f
 ### De-duplicating architecture 
 |![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/architecture_diagram_1.PNG)|
 |:--:| 
-| *add caption here* |
+| *Figure 1:........* |
 
 (add a caption)
 
 ### Pipleline of the reference architecture
-![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/architecture_diagram_2.PNG)
-(add a caption)
+|![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/architecture_diagram_2.PNG)|
+|:--:| 
+| *Figure 2:.......* |
 
 Design Implications and Discussion:
 
-The picture shows the overall architecture for Sanity System. 
-![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/arch.PNG)
+Figure 3 shows the overall architecture for Sanity System. 
+|![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/arch.PNG)|
+|:--:| 
+| *Figure 3:Overall Architecture for Sanity System* |
+
 (add caption and ref)
 * **Data Storage** has the actual data from the multiple live running containers without any annotations or filtering.
 * **Data Curation** filters each data event using either POV/filter based duplication. Then, it checks the checksum for each incoming data.
