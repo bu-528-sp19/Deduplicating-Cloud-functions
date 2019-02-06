@@ -118,39 +118,29 @@ The stretch goals are:
 
 ## 6.  Release Planning:
 
-**1. Survey and Learning:**
+Sprint 1(Due to 2.14):: 
   * Familiarize ourselves with Serverless Technology
   * Get detail understanding on the internal working of the standard open serverless framework, viz. [OpenWhisk](https://openwhisk.apache.org/)
   * Learn about storage deduplication techniques
   * Read literature/papers on existing deduplication techniques addressing similar problems
-
-**2. Design and Implementation:**
+  
+Sprint 2(Due to 2.28):
+  * Set up Kafka, Minio and other relevant features by implementing a use case.
+  * Start working towards Sanity Controller
+  
+Sprint 3(Due to 3.21):
   * Design a storage deduplication system for one of the open sourced Cloud Object Storage (aka COS) [minio](https://www.minio.io/)
   * Design new event management and function invocation framework for COS
   * Implement a function deduplication system
   
-**3. Evaluation:**
+Sprint 4(Due to 4.04):
   * Evaluate different storage deduplication and indexing techniques (in-memory databases, key-value stores, relational databases)
-    * Evaluate performance savings of the system on different dimensions:
+
+Sprint 5(Due to 4.18):
+  * Evaluate performance savings of the system on different dimensions:
   * Savings in avoiding function (container) invocations
     * Savings in time to execute the function 
     * Savings in time accessing duplicate data from COS
-
-**4. Stretch Goals:**
-  * Integrate and contribute our code to OpenWhisk
-  * Write a paper on this work for international conferences/workshops
-
-
-Sprint 1: 
-
-  * Familiarize ourselves with Serverless Technology
-  * Get detail understanding on the internal working of the standard open serverless framework, viz. [OpenWhisk](https://openwhisk.apache.org/)
-  * Learn about storage deduplication techniques
-  * Read literature/papers on existing deduplication techniques addressing similar problems
-  
-Sprint 2:
-  * Set up Kafka, Minio and other relevant features by implementing a use case.
-  * Start working towards Sanity Controller
 
 ## References
 
