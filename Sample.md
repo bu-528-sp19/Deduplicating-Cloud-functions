@@ -95,6 +95,7 @@ Ideally, we would implement such deduplication inside existing open serverless f
     * **Function controller**: That decides whether data if unique and needs to be invoked on OpenWhisk or it is duplicate and we can           avoid invoking it 
 
 ### De-duplicating architecture 
+
 |![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/architecture_diagram_1.PNG)|
 |:--:| 
 | *Figure 1:........* |
@@ -102,6 +103,7 @@ Ideally, we would implement such deduplication inside existing open serverless f
 (add a caption)
 
 ### Pipleline of the reference architecture
+
 |![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/architecture_diagram_2.PNG)|
 |:--:| 
 | *Figure 2:.......* |
@@ -109,6 +111,7 @@ Ideally, we would implement such deduplication inside existing open serverless f
 Design Implications and Discussion:
 
 Figure 3 shows the overall architecture for Sanity System. 
+
 |![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/arch.PNG)|
 |:--:| 
 | *Figure 3:Overall Architecture for Sanity System* |
