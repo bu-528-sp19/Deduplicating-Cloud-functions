@@ -2,7 +2,7 @@
 
 ## Deduplicating-Cloud-functions Project Proposal
 
-The purpose of this project is to design and implement a novel storage de-duplication framework for serverless platform. The primary objective of this deduplication system would be to avoid redundant execution of functions on the servers and improve overall throughput of the platform.
+The purpose of this project is to design and implement a novel storage de-duplication framework for the serverless platform. The primary objective of this deduplication system would be to avoid redundant execution of functions on the servers and improve the overall throughput of the platform.
 ** **
 
 ## 1.   Vision and Goals Of The Project:
@@ -10,14 +10,14 @@ The purpose of this project is to design and implement a novel storage de-duplic
 The goals of this project are:
 
 **1. Survey and Learning:**
-  * Familarize ourselves with Serverless Technology
-  * Get detail understanding on the internal working of standard open serverless framework, viz. [openwhisk](https://openwhisk.apache.org/)
+  * Familiarize ourselves with Serverless Technology
+  * Get detail understanding on the internal working of the standard open serverless framework, viz. [OpenWhisk](https://openwhisk.apache.org/)
   * Learn about storage deduplication techniques
   * Read literature/papers on existing deduplication techniques addressing similar problems
 
 **2. Design and Implementation:**
-  * Design a storage deduplication system for one of the open sourced cloud object storage (aka COS) [minio](https://www.minio.io/)
-  * Design a new event management and function invocation framework for COS
+  * Design a storage deduplication system for one of the open sourced Cloud Object Storage (aka COS) [minio](https://www.minio.io/)
+  * Design new event management and function invocation framework for COS
   * Implement a function deduplication system
   
 **3. Evaluation:**
@@ -28,27 +28,26 @@ The goals of this project are:
     * Savings in time accessing duplicate data from COS
 
 **4. Stretch Goals:**
-  * Integrate and contribute our code to openwhisk
+  * Integrate and contribute our code to OpenWhisk
   * Write a paper on this work for international conferences/workshops
 
-**5. Non-technical Goals:8**
-  * Follow standard Developmenent pratices with Git operations
-  * <Add some practices you are planning to use, like issue tracking, project milestones etc.>
+**5. Non-technical Goals:**
+  * Follow standard Development practices with Git operations
 ## 2. Users/Personas Of The Project:
 
 This section describes the principal user roles of the project together with the key characteristics of these roles. This information will inform the design and the user scenarios. A complete set of roles helps in ensuring that high-level requirements can be identified in the product backlog.
 
-This framework will be used by researchers from BU, MIT, NEU, Harvard ,UMass and the paying users of MOC(economic save).
+This framework will be used by researchers from BU, MIT, NEU, Harvard, UMass and the paying users of MOC(economic save).
 
-  **It does not target:**
-  
-    MOC admin users, who will work against the command line.
-    Administrators of cloud services, who will continue to use the services of serverless functions.
+**It does not target:**
 
-  **It targets :**
-  
-    The openwhisk platform on MOC
-    End users who just submits the stateless functions for executions without worrying internal details as it saves them money by saving     the functions calls in an instance.
+   * MOC admin users, who will work against the command line.
+   * Administrators of cloud services, who will continue to use the services of serverless functions.
+
+**It targets:**
+
+   * The OpenWhisk platform on MOC
+   * End users who just submits the stateless functions for executions without worrying internal details as it saves them money by saving the functions calls in an instance.
 
 ** **
 
@@ -62,11 +61,11 @@ This framework will be used by researchers from BU, MIT, NEU, Harvard ,UMass and
 
   * By avoiding container startup latency: Since most platforms execute stateless functions inside containers, eliminating redundant activation of functions results in low latency.
 
-*  Presents a framework for increasing “performance/cost” for end-users: 
+*  Presents a framework for improving “performance/cost” for end-users: 
 
     * End-users will use this framework indirectly which will, in turn, decrease the application cost for them since this framework increases throughput.
 
-    * Availability to increase throughput more by offering user to define PoVs: PoVs(Point of Variability) are parts of the data that is not important for the execution and should be ignored such as metadata. Availability of letting user choose those points allows a more fine-grained de-duplication.
+    * Availability to improve throughput by offering the user to define PoVs: PoVs(Point of Variability) are parts of the data that is not important for the execution and should be ignored such as metadata. Availability of letting the user choose those points allows a more fine-grained de-duplication.
 
 * Scalability: This novel storage de-duplication framework is designed and will be implemented for serverless execution model which in principle is flexible regarding scaling. An application can be scaled automatically or by adjusting its capacity through toggling the units of consumption.
 
@@ -87,7 +86,21 @@ This section provides a high-level outline of the solution.
 
 Global Architectural Structure Of the Project:
 
-This section provides a high-level architecture or a conceptual diagram showing the scope of the solution. If wireframes or visuals have already been done, this section could also be used to show how the intended solution will look. This section also provides a walkthrough explanation of the architectural structure. 
+Our objective for the project is to demonstrate the efficiency in performing function deduplication by deduplicating data. Ideally, we would implement such deduplication inside existing open serverless framework like OpenWhisk, but given time constraint we will implement a POC, where we will build these dedup components *on-top of* OpenWhisk instead of inside OpenWhisk. So essentially, users now will interact with our layer instead of interacting with OpenWhisk directly.
+
+ 1. Users will register their data sources (IoT, System logs, etc.) to our service (sanity)
+ 2. Users will register their functions that they want to execute for their data events
+ 3. Sanity controller components
+    * **Cloud Object Store** : We will use minio which is open source
+    * **Message/Event Buffer**: We will use kafka
+    * **Deduplication controller**: We will maintain data dedup index
+    * **Function controller**: That decides whether data if unique and needs to be invoked on OpenWhisk or it is duplicate and we can           avoid invoking it 
+
+### De-duplicating architecture 
+![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/architecture_diagram_1.PNG)
+
+### Pipleline of the reference architecture
+![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/architecture_diagram_2.PNG)
 
 Design Implications and Discussion:
 
@@ -105,15 +118,21 @@ Minimum acceptance criteria is to prevent data duplication which in turn would p
 
 The stretch goals are:
 
-Scale this to a distributed platform
+  * Integrate and contribute our code to OpenWhisk
+  * Write a paper on this work for international conferences/workshops
+
 
 ## 6.  Release Planning:
 
-(Temporary plan)
-
 Sprint 1: 
 
-Familiarizing ourselves with the existing OpenWhisk architecture and how it will be integrated with MOC.
+  * Familiarize ourselves with Serverless Technology
+  * Get detail understanding on the internal working of the standard open serverless framework, viz. [OpenWhisk](https://openwhisk.apache.org/)
+  * Learn about storage deduplication techniques
+  * Read literature/papers on existing deduplication techniques addressing similar problems
+  
+Sprint 2:
+  * Set up Kafka, Minio and other relevant features by implementing a use case.
+  * Start working towards Sanity Controller
 
-Getting insights into the existing prototype developed by the mentor.
 
