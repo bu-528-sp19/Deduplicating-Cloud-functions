@@ -1,0 +1,23 @@
+Steps to start Kafka
+
+1. start zookeeper server using:
+bin/zookeeper-server-start.sh config/zookeeper.properties
+
+2. Start Kafka broker using:
+bin/kafka-server-start.sh config/server.properties
+
+
+3. Create a topic using:
+bin/kafka-topics.sh --zookeeper localhost:2181 --create --topic MyFistTopic1 --partitions 2 --replication-factor 1
+
+
+4. Start the console producer using:
+bin/kafka-console-producer.sh --broker-list localhost:9092 --topic MyFirstTopic1
+
+
+5. Start the console consumer using:
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic MyFirstTopic1
+
+
+6. To display messages in a particular topic
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic MyFirstTopic1 --from-beginning

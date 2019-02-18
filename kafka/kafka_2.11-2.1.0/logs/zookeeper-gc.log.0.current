@@ -1,0 +1,35 @@
+OpenJDK 64-Bit Server VM (25.191-b12) for linux-amd64 JRE (1.8.0_191-8u191-b12-2ubuntu0.18.04.1-b12), built on Jan 14 2019 21:02:00 by "buildd" with gcc 7.3.0
+Memory: 4k page, physical 3073496k(786168k free), swap 2097148k(1918448k free)
+CommandLine flags: -XX:+ExplicitGCInvokesConcurrent -XX:GCLogFileSize=104857600 -XX:InitialHeapSize=536870912 -XX:InitiatingHeapOccupancyPercent=35 -XX:+ManagementServer -XX:MaxGCPauseMillis=20 -XX:MaxHeapSize=536870912 -XX:NumberOfGCLogFiles=10 -XX:+PrintGC -XX:+PrintGCDateStamps -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseG1GC -XX:+UseGCLogFileRotation 
+2019-02-18T12:27:23.672-0500: 495.802: [GC pause (G1 Evacuation Pause) (young), 0.0197520 secs]
+   [Parallel Time: 17.9 ms, GC Workers: 1]
+      [GC Worker Start (ms):  495802.2]
+      [Ext Root Scanning (ms):  2.0]
+      [Update RS (ms):  0.0]
+         [Processed Buffers:  0]
+      [Scan RS (ms):  0.0]
+      [Code Root Scanning (ms):  0.6]
+      [Object Copy (ms):  15.2]
+      [Termination (ms):  0.0]
+         [Termination Attempts:  1]
+      [GC Worker Other (ms):  0.0]
+      [GC Worker Total (ms):  17.9]
+      [GC Worker End (ms):  495820.1]
+   [Code Root Fixup: 0.1 ms]
+   [Code Root Purge: 0.0 ms]
+   [Clear CT: 0.0 ms]
+   [Other: 1.8 ms]
+      [Choose CSet: 0.0 ms]
+      [Ref Proc: 1.4 ms]
+      [Ref Enq: 0.0 ms]
+      [Redirty Cards: 0.0 ms]
+      [Humongous Register: 0.0 ms]
+      [Humongous Reclaim: 0.0 ms]
+      [Free CSet: 0.1 ms]
+   [Eden: 25.0M(25.0M)->0.0B(21.0M) Survivors: 0.0B->4096.0K Heap: 25.0M(512.0M)->3667.4K(512.0M)]
+ [Times: user=0.01 sys=0.00, real=0.02 secs] 
+Heap
+ garbage-first heap   total 524288K, used 4691K [0x00000000e0000000, 0x00000000e0101000, 0x0000000100000000)
+  region size 1024K, 6 young (6144K), 4 survivors (4096K)
+ Metaspace       used 10294K, capacity 10438K, committed 10752K, reserved 1058816K
+  class space    used 1151K, capacity 1219K, committed 1280K, reserved 1048576K
