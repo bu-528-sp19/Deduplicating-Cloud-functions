@@ -100,12 +100,12 @@ Our objective for the project is to demonstrate the efficiency in performing fun
 ![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/architecture_diagram_1.PNG)
 
 ### Pipleline of the reference architecture
-![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/architecture_diagram_2.PNG)
+![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/arch_new.png)
 
 Design Implications and Discussion:
 
 The picture shows the overall architecture for Sanity System. 
-![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/arch_new.png)
+![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/arch.PNG)
 * **Data Storage** has the actual data from the multiple live running containers without any annotations or filtering.
 * **Data Curation** filters each data event using either POV/filter based duplication. Then, it checks the checksum for each incoming data.
 * **Sanity Controller** indexes each event into the hashmap which identifies if the event is duplicate for a function. If the event is duplicate, it gets the output reference for the result from the earlier invocation.
