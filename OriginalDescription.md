@@ -100,7 +100,7 @@ Our objective for the project is to demonstrate the efficiency in performing fun
 ![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/architecture_diagram_1.PNG)
 
 ### Pipleline of the reference architecture
-![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/arch_new.png)
+![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/architecture_diagram_2.PNG)
 
 Design Implications and Discussion:
 
