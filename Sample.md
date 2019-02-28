@@ -96,32 +96,43 @@ Ideally, we would implement such deduplication inside existing open serverless f
 
 ### De-duplicating architecture 
 
+Function Types
+There are two types of functions in Serverless: Storage closed loop and External Stimuli. External stimuli functions get their input from data store then create external events whereas storage closed loop functions get their input from storage and also write their result to storage. The latter one is our main concern in this project.
+
+|![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/functiontypes.JPG)|
+|:--:| 
+| *Figure 1: Function Types in Serverless* |
+
+
 |![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/architecture_diagram_1.PNG)|
 |:--:| 
-| *Figure 1:........* |
+| *Figure 2: Overall Architecture* |
 
-(add a caption)
 
 ### Pipleline of the reference architecture
 
-|![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/architecture_diagram_2.PNG)|
+In our proposed architecture, Sanity controller will be the heart of the design. It will be in communication with other subparts. 
+First, a user will configure and define functions and their inputs and output in .yml file that will feed to the Sanity Controller. Source data will come to the Minio then Sanity Controller will check whether the incoming data is unique with the help of Redis. If same data for same function is processed before Sanity Controller will get the result from Minio directly. However, if the data is unique it will get sent to the OpenWhisk and get executed there. The result will be sent to the Sanity Controller and finally to Minio. 
+
+|![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/ourarch.JPG)|
 |:--:| 
-| *Figure 2:.......* |
+| *Figure 3: Proposed Architecture* |
 
 Design Implications and Discussion:
 
-Figure 3 shows the overall architecture for Sanity System. 
+Figure 4 shows the overall architecture for Sanity System. 
 
 |![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/arch.PNG)|
 |:--:| 
-| *Figure 3:Overall Architecture for Sanity System* |
+| *Figure 4:Overall Architecture for Sanity System* |
 
 (add caption and ref)
 * **Data Storage** has the actual data from the multiple live running containers without any annotations or filtering.
 * **Data Curation** filters each data event using either POV/filter based duplication. Then, it checks the checksum for each incoming data.
 * **Sanity Controller** indexes each event into the hashmap which identifies if the event is duplicate for a function. If the event is duplicate, it gets the output reference for the result from the earlier invocation.
 * **Function Rule Map** stores the rules to associate data events with respective functions.
-* **Function dupMap** maintains checksum of all unique input data processed by each function 
+* **Function dupMap** maintains checksum of all unique input data processed by each function.
+
 
 ## 5. Acceptance criteria
 
