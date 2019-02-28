@@ -1,43 +1,36 @@
 ** **
 
-## Deduplicating-Cloud-functions Project Proposal
+## Deduplicating-Cloud-functions 
 
-The purpose of this project is to design and implement a novel storage de-duplication framework for the serverless platform. The primary objective of this deduplication system would be to avoid redundant execution of functions on the servers and improve the overall throughput of the platform.
+Deduplication is useful for organizations dealing with highly redundant operations that requires constant copying and storing of data for future reference or recovery purpose. 
+
+The term is explained as an approach that eliminates duplicate copies of data from the system. For instance, a file that is backed up every week results in a lot of duplicate data and thus, eats up considerable disk space. Deduplication run an analysis and eliminates these sets of duplicate data and keeps only what is unique and essential, thus significantly clearing storage space. Here are some benefits of data deduplication for organizations.
+
+  * Clears storage space: Running the technique can help reduce storage requirements by up to 80% for backups and files. This allows         organizations save far more data on the same system and extends disk purchase intervals automatically. With the advantage of speed,     organizations can store data to disk cost effectively.
+
+  * Adept replication: The deduplication process writes only unique data on the disk and thus, there’s need to replicate only these set     of blocks. Depending on the type of application, the traffic for data replication can be reduced by 90%.
+
+  * Effective use of network bandwidth: If data deduplication takes place at sources, there’s no need to transmit data over the network,     thus eliminating unwanted use of network bandwidth.
+
+  * Cost-effective: As fewer disks are required, storage cost is reduced significantly. Besides, it also tends to improve disaster           recovery as lesser amount of data is transferred.
+
+With the massive data explosion, technologies that offers approaches to efficiently manage it is considered real attractive.Deduplication is one such technology that assist with effectively managing storage devices as it enables efficient usage of data storage and network bandwidth.
+
+The purpose of this project is to design and implement a novel storage de-duplication framework for serverless platform in order to improve overall throughput of the platform.
+
 ** **
 
 ## 1.   Vision and Goals Of The Project:
 
-The goals of this project are:
+The final product of this project will be a de-duplication service that leverages application-aware semantic-equivalence to identify duplicate data at storage system and avoids redundant invocation of functions on servers. Main goals include:
 
-**1. Survey and Learning:**
-  * Familiarize ourselves with Serverless Technology
-  * Get detail understanding on the internal working of the standard open serverless framework, viz. [OpenWhisk](https://openwhisk.apache.org/)
-  * Learn about storage deduplication techniques
-  * Read literature/papers on existing deduplication techniques addressing similar problems
-
-**2. Design and Implementation:**
-  * Design a storage deduplication system for one of the open sourced Cloud Object Storage (aka COS) [minio](https://www.minio.io/)
-  * Design new event management and function invocation framework for COS
-  * Implement a function deduplication system
+  * Define and implement specialized data curation techniques
+  * Optimize de-duplication data structure and indexing
+  * Perform data and event de-duplication to avoid redundant execution of stateless functions
+  * Demonstrate the efficiency in performing function deduplication by deduplicating data
   
-**3. Evaluation:**
-  * Evaluate different storage deduplication and indexing techniques (in-memory databases, key-value stores, relational databases)
-    * Evaluate performance savings of the system on different dimensions:
-  * Savings in avoiding function (container) invocations
-    * Savings in time to execute the function 
-    * Savings in time accessing duplicate data from COS
 
-**4. Stretch Goals:**
-  * Integrate and contribute our code to OpenWhisk
-  * Write a paper on this work for international conferences/workshops
-
-**5. Non-technical Goals:**
-  * Follow standard Development practices with Git operations
 ## 2. Users/Personas Of The Project:
-
-This section describes the principal user roles of the project together with the key characteristics of these roles. This information will inform the design and the user scenarios. A complete set of roles helps in ensuring that high-level requirements can be identified in the product backlog.
-
-This framework will be used by researchers from BU, MIT, NEU, Harvard, UMass and the paying users of MOC(economic save).
 
 **It does not target:**
 
@@ -46,8 +39,8 @@ This framework will be used by researchers from BU, MIT, NEU, Harvard, UMass and
 
 **It targets:**
 
-   * The OpenWhisk platform on MOC
-   * End users who just submits the stateless functions for executions without worrying internal details as it saves them money by saving the functions calls in an instance.
+   * Cloud vendors who design their serverless build environement. This will execute stateless functions without worrying internal            details as it saves them money by saving the functions calls in an instance.
+   * Virtual desktop infrastructure (VDI) is another very good candidate for deduplication, because the duplicate data among desktops is      very high
 
 ** **
 
@@ -73,7 +66,7 @@ This framework will be used by researchers from BU, MIT, NEU, Harvard, UMass and
 
 **What will not be delivered?**
 
-* This framework does not help save storage space since for every new data coming original data is stored multiple times.
+* This framework does not help save storage space since for every new data coming original data is stored multiple times.(fix this or delete it)
 
 * This system can only be implemented on storage closed-loop functions, which takes data from data storage and writes the result again to the data storage. However, external stimuli functions are not the part of this de-duplication design because they take their data from storage but then trigger external events.
 
@@ -81,36 +74,64 @@ This framework will be used by researchers from BU, MIT, NEU, Harvard, UMass and
 
 ## 4. Solution Concept
 
-This section provides a high-level outline of the solution.
+### Background & Motivation
 
+Serverless platforms mostly execute functions inside containers that are typically reused across multiple invocations of the same function to mask the container startup latency. However, state maintained locally by a function might not be available across invocations. In order to be scalable concerning the incoming events by design all serverless platforms implement stateless function semantics. These stateless functions can also be identified as idempotent which means they compute same result for duplicate data.
 
-Global Architectural Structure Of the Project:
+Serverless applications typically have data sources as IoT/sensor data, social media data, user activity data and system state monitoring data. Data generated from these sources are largely consistent, causing data duplication. For example, for the generic cases the boundaries for temperature is very tight and the degree value is mostly consistent for a specific location of the sensor. In this case, our system will be getting extensive amount of duplicate data during the day.
 
-Our objective for the project is to demonstrate the efficiency in performing function deduplication by deduplicating data. Ideally, we would implement such deduplication inside existing open serverless framework like OpenWhisk, but given time constraint we will implement a POC, where we will build these dedup components *on-top of* OpenWhisk instead of inside OpenWhisk. So essentially, users now will interact with our layer instead of interacting with OpenWhisk directly.
+In the light of the above facts and the distributed storage and server architecture in serverless systems, an opportunity arises to build a specialized data de-duplication service which will de-duplicate the cloud function invocations.
+
+### Global Architectural Structure Of the Project:
+
+Ideally, we would implement such deduplication inside existing open serverless framework like OpenWhisk(add link or ref), but given time constraint we will implement a POC, where we will build these dedup components *on-top of* OpenWhisk instead of inside OpenWhisk. So essentially, users now will interact with our layer instead of interacting with OpenWhisk directly.
 
  1. Users will register their data sources (IoT, System logs, etc.) to our service (sanity)
  2. Users will register their functions that they want to execute for their data events
  3. Sanity controller components
-    * **Cloud Object Store** : We will use minio which is open source
-    * **Message/Event Buffer**: We will use kafka
+    * **Cloud Object Store** : We will use minio which is open source (add a link to minio or reference)
+    * **Message/Event Buffer**: We will use kafka(add link or ref)
     * **Deduplication controller**: We will maintain data dedup index
     * **Function controller**: That decides whether data if unique and needs to be invoked on OpenWhisk or it is duplicate and we can           avoid invoking it 
 
 ### De-duplicating architecture 
-![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/architecture_diagram_1.PNG)
+
+Function Types
+There are two types of functions in Serverless: Storage closed loop and External Stimuli. External stimuli functions get their input from data store then create external events whereas storage closed loop functions get their input from storage and also write their result to storage. The latter one is our main concern in this project.
+
+|![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/functiontypes.JPG)|
+|:--:| 
+| *Figure 1: Function Types in Serverless* |
+
+
+|![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/architecture_diagram_1.PNG)|
+|:--:| 
+| *Figure 2: Overall Architecture* |
+
 
 ### Pipleline of the reference architecture
-![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/arch_new.png)
+
+In our proposed architecture, Sanity controller will be the heart of the design. It will be in communication with other subparts. 
+First, a user will configure and define functions and their inputs and output in .yml file that will feed to the Sanity Controller. Source data will come to the Minio then Sanity Controller will check whether the incoming data is unique with the help of Redis. If same data for same function is processed before Sanity Controller will get the result from Minio directly. However, if the data is unique it will get sent to the OpenWhisk and get executed there. The result will be sent to the Sanity Controller and finally to Minio. 
+
+|![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/ourarch.JPG)|
+|:--:| 
+| *Figure 3: Proposed Architecture* |
 
 Design Implications and Discussion:
 
-The picture shows the overall architecture for Sanity System. 
-![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/arch.PNG)
+Figure 4 shows the overall architecture for Sanity System. 
+
+|![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/arch.PNG)|
+|:--:| 
+| *Figure 4:Overall Architecture for Sanity System* |
+
 * **Data Storage** has the actual data from the multiple live running containers without any annotations or filtering.
 * **Data Curation** filters each data event using either POV/filter based duplication. Then, it checks the checksum for each incoming data.
 * **Sanity Controller** indexes each event into the hashmap which identifies if the event is duplicate for a function. If the event is duplicate, it gets the output reference for the result from the earlier invocation.
 * **Function Rule Map** stores the rules to associate data events with respective functions.
-* **Function dupMap** maintains checksum of all unique input data processed by each function 
+* **Function dupMap** maintains checksum of all unique input data processed by each function.
+
 
 ## 5. Acceptance criteria
 
@@ -124,15 +145,33 @@ The stretch goals are:
 
 ## 6.  Release Planning:
 
-Sprint 1: 
-
+Sprint 1(Due to 2.14):: 
   * Familiarize ourselves with Serverless Technology
   * Get detail understanding on the internal working of the standard open serverless framework, viz. [OpenWhisk](https://openwhisk.apache.org/)
   * Learn about storage deduplication techniques
   * Read literature/papers on existing deduplication techniques addressing similar problems
   
-Sprint 2:
+Sprint 2(Due to 2.28):
   * Set up Kafka, Minio and other relevant features by implementing a use case.
   * Start working towards Sanity Controller
+  
+Sprint 3(Due to 3.21):
+  * Design a storage deduplication system for one of the open sourced Cloud Object Storage (aka COS) [minio](https://www.minio.io/)
+  * Design new event management and function invocation framework for COS
+  * Implement a function deduplication system
+  
+Sprint 4(Due to 4.04):
+  * Evaluate different storage deduplication and indexing techniques (in-memory databases, key-value stores, relational databases)
 
+Sprint 5(Due to 4.18):
+  * Evaluate performance savings of the system on different dimensions:
+  * Savings in avoiding function (container) invocations
+    * Savings in time to execute the function 
+    * Savings in time accessing duplicate data from COS
+
+## References
+
+ * What is Data deduplication and it's uses: 
+ (http://blog.webwerks.in/cloud-hosting-blog/what-are-the-real-benefits-of-data-deduplication-in-cloud)
+ * Sanity: The Less Server Architecture for Cloud functions(http://niltonbila.com/pub/Nadgowda-WoSC17.pdf)
 
