@@ -126,7 +126,6 @@ Figure 4 shows the overall architecture for Sanity System.
 |:--:| 
 | *Figure 4:Overall Architecture for Sanity System* |
 
-(add caption and ref)
 * **Data Storage** has the actual data from the multiple live running containers without any annotations or filtering.
 * **Data Curation** filters each data event using either POV/filter based duplication. Then, it checks the checksum for each incoming data.
 * **Sanity Controller** indexes each event into the hashmap which identifies if the event is duplicate for a function. If the event is duplicate, it gets the output reference for the result from the earlier invocation.
