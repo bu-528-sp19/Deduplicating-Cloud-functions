@@ -1,0 +1,48 @@
+{
+	"EventName": "s3:ObjectCreated:Put",
+	"Key": "test1/abc",
+	"Records": [{
+		"eventVersion": "2.0",
+		"eventSource": "minio:s3",
+		"awsRegion": "sanity-local",
+		"eventTime": "2019-03-01T23:54:03Z",
+		"eventName": "s3:ObjectCreated:Put",
+		"userIdentity": {
+			"principalId": "sanity"
+		},
+		"requestParameters": {
+			"sourceIPAddress": "172.17.0.1:34346"
+		},
+		"responseElements": {
+			"x-amz-request-id": "1587FAE1B0440DAA",
+			"x-minio-origin-endpoint": "http://127.0.0.1:9000"
+		},
+		"s3": {
+			"s3SchemaVersion": "1.0",
+			"configurationId": "Config",
+			"bucket": {
+				"name": "test1",
+				"ownerIdentity": {
+					"principalId": "sanity"
+				},
+				"arn": "arn:aws:s3:::test1"
+			},
+			"object": {
+				"key": "abc",
+				"size": 6,
+				"eTag": "b1946ac92492d2347c6235b4d2611184",
+				"contentType": "application/octet-stream",
+				"userMetadata": {
+					"content-type": "application/octet-stream"
+				},
+				"versionId": "1",
+				"sequencer": "1587FAE1B0440DAA"
+			}
+		},
+		"source": {
+			"host": "172.17.0.1",
+			"port": "34346",
+			"userAgent": "Minio (linux; amd64) minio-go/v6.0.12 mc/2019-01-10T00:38:22Z"
+		}
+	}]
+}
