@@ -7,11 +7,10 @@ consumer = KafkaConsumer('in-bucket-notifications', bootstrap_servers=['172.18.0
     #group_id='my-group',
     #api_version=(0,10))
 
+# to display event name and file location on Minio Cloud Storage
 for message in consumer:
     record = loads(message.value)
-    # to display event name
     print("Event Name : ", record["EventName"])
-    # to display file location on Minio Cloud Storage
     print("File location : ", record["Key"])
 
 
