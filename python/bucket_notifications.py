@@ -12,4 +12,7 @@ consumer = KafkaConsumer(
 
 for message in consumer:
     record = loads(message.value)
-    print(record)
+	# to display event name 
+    print("Event Name : ", record["EventName"])
+	# to display file location on Minio Cloud Storage
+	print("File location : ", record["Key"])
