@@ -1,10 +1,7 @@
 from kafka import KafkaConsumer
 from json import loads
 
-consumer = KafkaConsumer(
-    'in-bucket-notifications',
-    bootstrap_servers=['172.18.0.2:9092'],
-    auto_offset_reset='latest')
+consumer = KafkaConsumer('in-bucket-notifications', bootstrap_servers=['172.18.0.2:9092'], auto_offset_reset='latest')
     #value_deserializer=lambda x: loads(x.decode('utf-8')))
     #enable_auto_commit=True,
     #group_id='my-group',
@@ -12,7 +9,10 @@ consumer = KafkaConsumer(
 
 for message in consumer:
     record = loads(message.value)
-	# to display event name 
+    # to display event name
     print("Event Name : ", record["EventName"])
-	# to display file location on Minio Cloud Storage
-	print("File location : ", record["Key"])
+    # to display file location on Minio Cloud Storage
+    print("File location : ", record["Key"])
+
+
+
