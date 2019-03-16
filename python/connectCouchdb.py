@@ -1,10 +1,10 @@
 import couchdb
 
 def connect_couchdb():
-    couch = couchdb.Server("http://localhost:5984")
+    couch = couchdb.Server("http://52.116.33.131:5984")
     return couch
 
-def addFunctionIfNotExist(couch,functionId,db_name="test"):
+def addFunctionIfNotExist(couch,db_name="sanity"):
 
     if db_name not in couch:
         db = couch.create(db_name)
@@ -15,7 +15,7 @@ def addFunctionIfNotExist(couch,functionId,db_name="test"):
 				  "ref": [
 					{
 					  "checksum": "48480882390a88a0b933b3ff0bf62dc5",
-					  "minio_ref": "http://localhost:9000/output/out120.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=DCJSAEHVFETULK44U89V%2F20190228%2F%2Fs3%2Faws4_request&X-Amz-Date=20190228T170652Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=250d562571de25b845c7ea85ae3aa887bb920d7b945940f1932c11f9444b8473"
+					  "minio_ref": "abc"
 					}
 				  ]
 				}]

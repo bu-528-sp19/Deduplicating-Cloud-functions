@@ -1,20 +1,22 @@
 import json
 from kafka import KafkaConsumer
-
+from json import loads
 
 def kafka_consumer(topic_name):
-    consumer = KafkaConsumer(topic_name, auto_offset_reset='earliest',
-                             bootstrap_servers=['172.18.0.2:9092'], api_version=(0, 10), consumer_timeout_ms=1000)
 
-    inf = 1
-    while inf == 1:
-        for msg in consumer:
-            record = json.loads(msg.value)
-            print(record)
+    consumer = KafkaConsumer(
+        topic_name,
+        bootstrap_servers=['172.18.0.2:9092'],
+        auto_offset_reset='latest')
 
+    for message in consumer:
+        record = loads(message.value)
+        #print("Event Name :", record["EventName"])
+        print("File location :", record["Key"])
+        event = record["Key"]
 
-        if consumer is not None:
-            consumer.close()
+        return event
+
 
 if __name__ == "__main__":
     kafka_consumer("in-bucket-notifications")

@@ -2,13 +2,13 @@ from minio import Minio
 from checksum import calculate_checksum
 from parseYaml import parse_yaml
 from connectCouchdb import connect_couchdb,addFunctionIfNotExist,addUniqueChecksum
-from thumbnail import create_thumbnail
+
 
 def connect_minio():
-    mc = Minio('localhost:9000',
-                          access_key='DCJSAEHVFETULK44U89V',
-                          secret_key='ppYczqLJvFO1QhWXQoK73SRCTaVv8bA+ZcFaligU',
-                          secure=False)
+    mc = Minio('52.116.33.131:9000',
+                   access_key='sanity',
+                   secret_key='CloudforAll!',
+                   secure=False)
 
     return mc
 
