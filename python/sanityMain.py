@@ -7,8 +7,6 @@ from connectOpenWhisk import execute
 topicName = "in-bucket-notifications"
 
 event = kafka_consumer(topicName)
-#parse the file name
-
 bucket_name=event.split('/')[0]
 file_name=event.split('/')[1]
 
@@ -16,7 +14,6 @@ file_name=event.split('/')[1]
 couch = connect_couchdb()
 
 if bucket_name == "input":
-
     mc = connect_minio()
     obj = getObject(mc, file_name, bucket_name)
 
