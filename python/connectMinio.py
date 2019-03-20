@@ -1,7 +1,7 @@
 from minio import Minio
 from checksum import calculate_checksum
 from parseYaml import parse_yaml
-from connectCouchdb import connect_couchdb,addFunctionIfNotExist,addUniqueChecksum
+from connectCouchdb import connect_couchdb,addFunctionIfNotExist
 
 
 def connect_minio():
@@ -51,7 +51,7 @@ def main():
     #addUniqueChecksum(db,img_checksum)
 
     '''call to openwhisk'''
-    create_thumbnail(fromkafka)
+    #create_thumbnail(fromkafka)
 
 if __name__ == "__main__":
     main()

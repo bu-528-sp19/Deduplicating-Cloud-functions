@@ -1,32 +1,44 @@
 from kafkaConnect import kafka_consumer
 from connectMinio import connect_minio,getObject
 from checksum import calculate_checksum
-from connectCouchdb import connect_couchdb,addFunctionIfNotExist
+from connectCouchdb import connect_couchdb,addFunctionIfNotExist,addMinioRef,addInputDataIfNotExist,verfiyDataAvailable
 from connectOpenWhisk import execute
 
-topicName = "in-bucket-notifications"
+def process(event):
+    bucket_name = event.split('/')[0]
+    file_name = event.split('/')[1]
 
-event = kafka_consumer(topicName)
-bucket_name=event.split('/')[0]
-file_name=event.split('/')[1]
+    #Hard-coded for now
+    function_id = "fid123"
 
-'''connect couchdb'''
-couch = connect_couchdb()
+    #connect couchdb
+    couch = connect_couchdb()
 
-if bucket_name == "input":
+    #connect minio
     mc = connect_minio()
+
+    #fetch file from
     obj = getObject(mc, file_name, bucket_name)
 
     img_checksum = calculate_checksum(obj)
-    addFunctionIfNotExist(couch, "sanity")
 
-    ##couch db code to check if data exists or not
+    if bucket_name == "input":
+        #create function if not present
+        addFunctionIfNotExist(couch, "sanity")
 
-    ##Executing the openwhisk command
-    command = "wsk -i action invoke action_thumbnail"
-    execute(command)
-else:
-    #code to put the ref name in couuchdb
+        # Check if same data is available in the couch db
+        state = verfiyDataAvailable(couch,function_id,img_checksum,"sanity")
 
+        if state is not None:
+            return state
 
+        #create data if not present
+        addInputDataIfNotExist(couch,function_id,img_checksum)
 
+        command = "wsk -i action invoke action_thumbnail"
+        execute(command)
+
+    else:
+        # code to put the ref name in couuchdb
+        addMinioRef(couch, function_id, img_checksum, event)
+        return event

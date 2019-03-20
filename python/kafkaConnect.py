@@ -1,6 +1,7 @@
 import json
 from kafka import KafkaConsumer
 from json import loads
+from sanityMain import process
 
 def kafka_consumer(topic_name):
 
@@ -14,9 +15,8 @@ def kafka_consumer(topic_name):
         #print("Event Name :", record["EventName"])
         print("File location :", record["Key"])
         event = record["Key"]
-
-        return event
-
+        data = process(event)
+        print(data)
 
 if __name__ == "__main__":
     kafka_consumer("in-bucket-notifications")
