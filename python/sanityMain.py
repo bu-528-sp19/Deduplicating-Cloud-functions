@@ -48,7 +48,9 @@ def process(event):
         ref = data['reference']
         #print(ref)
 
-        addMinioRef(couch, function_id, img_checksum, event)
+        addMinioRef(couch, function_id, img_checksum, ref)
+
+    return ref
 
 '''
     else:
