@@ -14,6 +14,7 @@ Options:
 
 """
 from docopt import docopt
+from connectMinio import connect_minio,createBucket
 
 if __name__ == '__main__':
     arguments = docopt(__doc__, version='sanity 1.0')
@@ -24,3 +25,7 @@ if __name__ == '__main__':
     input_bucket = arguments.get('<input>')
     output_bucket = arguments.get('<output>')
     function_name = arguments.get('<function>')
+
+    mc = connect_minio()
+    createBucket(mc,input_bucket)
+    createBucket(mc, output_bucket)
