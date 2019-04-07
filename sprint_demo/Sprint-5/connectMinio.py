@@ -1,5 +1,6 @@
 from minio import Minio
 from checksum import calculate_checksum
+from minio.error import ResponseError
 from connectCouchdb import connect_couchdb,addFunctionIfNotExist
 
 
@@ -19,3 +20,13 @@ def getObject(mc,fromkafka,bucket):
         for d in data.stream(32 * 1024):
             file_data.write(d)
     return obj
+
+def createBucket(mc,bucket):
+    try:
+
+        if not mc.bucket_exists(bucket):
+            print("a")
+            mc.make_bucket(bucket)
+
+    except ResponseError as err:
+        print(err)
