@@ -1,4 +1,3 @@
-from kafkaConnect import kafka_consumer
 from connectMinio import connect_minio,getObject
 from checksum import calculate_checksum
 from connectCouchdb import connect_couchdb,addFunctionIfNotExist,addMinioRef,addInputDataIfNotExist,verfiyDataAvailable
@@ -27,7 +26,7 @@ def process(event):
     #if bucket_name == "input":
 
     #create function if not present
-    addFunctionIfNotExist(couch, "sanity")
+    addFunctionIfNotExist(couch, function_id)
 
     # Check if same data is available in the couch db
     state = verfiyDataAvailable(couch,function_id,img_checksum,"sanity")
@@ -39,14 +38,13 @@ def process(event):
     addInputDataIfNotExist(couch,function_id,img_checksum)
 
     command = "wsk -i action invoke sprint"
-    execute(command)
+    result = execute(command)
 
-    time.sleep(5)
+    time.sleep(100)
     obj = getObject(mc, "minio_log.json", "store")
     with open(obj) as json_file:
         data = json.load(json_file)
         ref = data['reference']
-        #print(ref)
 
         addMinioRef(couch, function_id, img_checksum, ref)
 

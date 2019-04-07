@@ -37,6 +37,7 @@ def addMinioRef(couch,functionChecksum,inputChecksum,minioRef,db_name="sanity"):
     db = couch[db_name]
     for id in db:
         doc = db[id]
+        print(doc[functionChecksum])
         if inputChecksum in doc[functionChecksum]:
             doc[functionChecksum][inputChecksum]= minioRef
             db.save(doc)
@@ -47,7 +48,16 @@ def verfiyDataAvailable(couch,functionChecksum,inputChecksum,db_name="sanity"):
     db = couch[db_name]
     for id in db:
         doc = db[id]
+        if functionChecksum not in doc:
+            return None
         if inputChecksum in doc[functionChecksum]:
             return doc[functionChecksum][inputChecksum]
         else:
             return None
+
+if __name__ == "__main__":
+    couch = connect_couchdb()
+    #addFunctionIfNotExist(couch, "fid123")
+    addInputDataIfNotExist(couch, "fid123", "firstDataChecksum")
+    addMinioRef(couch, "fid123", "firstDataChecksum", "test2/abc.img")
+    #print(verfiyDataAvailable(couch, "firstFunction", "firstDataChecksum1"))

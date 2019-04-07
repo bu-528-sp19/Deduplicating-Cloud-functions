@@ -4,17 +4,19 @@ from minio.error import ResponseError
 import json
 
 client = Minio('52.116.33.131:9000',access_key='sanity',secret_key='CloudforAll!',secure=False)
-#client.fget_object('store', 'kafka_log.json', 'kafka_log.json')
+client.fget_object('store', 'kafka_log.json', 'kafka_log.json')
 with open('kafka_log.json') as file:
     data = json.load(file)
 
 file_location = data["Key"]
 bucket_name = file_location.split('/')[0]
 file_name = file_location.split('/')[1]
+print(bucket_name)
+print(file_name)
 
 # getting object from Minio
 try:
-    client.fget_object(bucket_name, file_name, 'weather.json')
+    client.fget_object(bucket_name, file_name, file_name)
 except ResponseError as err:
     print(err)
 

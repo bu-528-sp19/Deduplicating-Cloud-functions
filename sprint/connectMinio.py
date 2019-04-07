@@ -7,7 +7,7 @@ from connectCouchdb import connect_couchdb,addFunctionIfNotExist
 def connect_minio():
     mc = Minio('52.116.33.131:9000',
                    access_key='sanity',
-                   secret_key='CloudforAll!',region='us-east-1',
+                   secret_key='CloudforAll!',
                    secure=False)'''
 
 def connect_minio():
