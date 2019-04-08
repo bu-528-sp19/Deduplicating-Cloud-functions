@@ -27,5 +27,5 @@ if __name__ == '__main__':
     mc = connect_minio()
     #createBucket(mc,input_bucket)
     #createBucket(mc, output_bucket)
-    kafka_consumer("in-bucket-notifications")
+    kafka_consumer("in-bucket-notifications",function_name)
 

@@ -5,7 +5,7 @@ from sanityMain import process
 from minio.error import ResponseError
 from minio import Minio
 
-def kafka_consumer(topic_name):
+def kafka_consumer(topic_name,function_name):
 
     consumer = KafkaConsumer(
         topic_name,
@@ -27,10 +27,10 @@ def kafka_consumer(topic_name):
             # Put a json object log with contents from kafka consumer in store bucket
             try:
                 minioClient.fput_object('store', 'kafka_log.json', 'kafka_log.json')
-                output_reference = process(json_data['Key'])
+                output_reference = process(json_data['Key'],function_name)
                 print('\nOutput File reference :', output_reference)
             except ResponseError as err:
                 print(err)
 
 if __name__ == "__main__":
-    kafka_consumer("in-bucket-notifications")
+    kafka_consumer("in-bucket-notifications","")

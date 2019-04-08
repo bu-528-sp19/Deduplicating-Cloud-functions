@@ -5,12 +5,14 @@ from connectOpenWhisk import execute
 import json
 import time
 
-def process(event):
+def process(event,function_name):
     bucket_name = event.split('/')[0]
     file_name = event.split('/')[1]
 
 
-    function_id = "shfdguhrgfgekfvgsdv"
+    #function_id = "shfdguhrgfgekfvgsdv"
+    #function_name
+    function_id = calculate_checksum(function_name)
 
     #connect couchdb
     couch = connect_couchdb()
@@ -39,7 +41,6 @@ def process(event):
 
     #create command that makes an action
     action_name = "random"
-    command = "wsk -i action create //dockerstring name"
 
     command = "wsk -i action invoke sprint"
     execute(command)
