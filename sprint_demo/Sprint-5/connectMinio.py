@@ -23,10 +23,8 @@ def getObject(mc,fromkafka,bucket):
 
 def createBucket(mc,bucket):
     try:
-
         if not mc.bucket_exists(bucket):
-            print("a")
-            mc.make_bucket(bucket)
+            mc.make_bucket(bucket,location="sanity-local")
 
     except ResponseError as err:
         print(err)

@@ -3,7 +3,7 @@
 Usage:
   sanity.py -h | --help
   sanity.py --version
-  sanity.py sanity (--i <input>) (--o <output>) (--f <function>)
+  sanity.py --i <input>) (--o <output>) (--f <function>)
 
 Options:
   -h --help     Show this screen.

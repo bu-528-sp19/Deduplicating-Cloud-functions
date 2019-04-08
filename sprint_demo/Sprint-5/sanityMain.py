@@ -29,6 +29,7 @@ def process(event,function_name):
     state = verfiyDataAvailable(couch,function_id,img_checksum,"sanity")
 
     if state is not None:
+        print("\n**Duplicated data**")
         return state
 
     #create data if not present
@@ -39,7 +40,7 @@ def process(event,function_name):
 
     command = "wsk -i action invoke weatherhit"
     execute(command)
-
+    print(file_name+" Invoked Successfully")
     time.sleep(5)
     obj = getObject(mc, "minio_log.json", "store")
     with open(obj) as json_file:
