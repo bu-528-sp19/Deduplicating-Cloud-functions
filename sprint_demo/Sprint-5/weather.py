@@ -20,7 +20,7 @@ try:
 except ResponseError as err:
     print(err)
 
-with open('weather.json') as json_file:
+with open(file_name) as json_file:
     data = json.load(json_file)
     min_temp = data['temp_min']
     max_temp = data['temp_max']
@@ -29,7 +29,7 @@ weather = {}
 avg = (min_temp+max_temp)/2
 weather['avg'] = avg
 
-outputFile = 'weatherOutput.json'
+outputFile = file_name+'Output.json'
 with open(outputFile, 'w') as fp:
     json.dump(weather, fp)
 
