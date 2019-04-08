@@ -9,9 +9,6 @@ def process(event,function_name):
     bucket_name = event.split('/')[0]
     file_name = event.split('/')[1]
 
-
-    #function_id = "shfdguhrgfgekfvgsdv"
-    #function_name
     function_id = calculate_checksum(function_name)
 
     #connect couchdb
@@ -24,8 +21,6 @@ def process(event,function_name):
     obj = getObject(mc, file_name, bucket_name)
 
     img_checksum = calculate_checksum(obj)
-
-    #if bucket_name == "input":
 
     #create function if not present
     addFunctionIfNotExist(couch, function_id)
@@ -50,7 +45,6 @@ def process(event,function_name):
     with open(obj) as json_file:
         data = json.load(json_file)
         ref = data['reference']
-        print(ref)
 
         addMinioRef(couch, function_id, img_checksum, ref)
 

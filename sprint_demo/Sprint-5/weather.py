@@ -29,7 +29,7 @@ weather = {}
 avg = (min_temp+max_temp)/2
 weather['avg'] = avg
 
-outputFile = file_name+'Output.json'
+outputFile = "output"+file_name
 with open(outputFile, 'w') as fp:
     json.dump(weather, fp)
 
