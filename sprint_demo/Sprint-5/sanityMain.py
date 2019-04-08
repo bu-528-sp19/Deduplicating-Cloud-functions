@@ -42,7 +42,7 @@ def process(event,function_name):
     #create command that makes an action
     action_name = "random"
 
-    command = "wsk -i action invoke sprint"
+    command = "wsk -i action invoke weatherhit"
     execute(command)
 
     time.sleep(5)
