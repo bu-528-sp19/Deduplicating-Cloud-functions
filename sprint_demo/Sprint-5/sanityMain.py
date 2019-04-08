@@ -37,6 +37,10 @@ def process(event):
     #create data if not present
     addInputDataIfNotExist(couch,function_id,img_checksum)
 
+    #create command that makes an action
+    action_name = "random"
+    command = "wsk -i action create //dockerstring name"
+
     command = "wsk -i action invoke sprint"
     execute(command)
 

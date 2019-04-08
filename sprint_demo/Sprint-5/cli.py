@@ -15,6 +15,7 @@ Options:
 """
 from docopt import docopt
 from connectMinio import connect_minio,createBucket
+from kafkaConnect import kafka_consumer
 
 if __name__ == '__main__':
     arguments = docopt(__doc__, version='sanity 1.0')
@@ -24,5 +25,7 @@ if __name__ == '__main__':
     function_name = arguments.get('<function>')
 
     mc = connect_minio()
-    createBucket(mc,input_bucket)
-    createBucket(mc, output_bucket)
+    #createBucket(mc,input_bucket)
+    #createBucket(mc, output_bucket)
+    kafka_consumer("in-bucket-notifications")
+
