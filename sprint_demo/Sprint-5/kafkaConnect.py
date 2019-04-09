@@ -25,12 +25,11 @@ def kafka_consumer(topic_name,function_name):
             minioClient = Minio('52.116.33.131:9000', access_key='sanity', secret_key='CloudforAll!', secure=False)
             try:
                 start = time.time()
-                print(start)
                 minioClient.fput_object('store', 'kafka_log.json', 'kafka_log.json')
                 output_reference = process(json_data['Key'],function_name)
                 print('Output File reference :', output_reference)
                 end = time.time()
-                print("Total time execution - \n",end - start)
+                print("\nTotal time execution - ",end - start+" sec(s)\n")
             except ResponseError as err:
                 print(err)
 

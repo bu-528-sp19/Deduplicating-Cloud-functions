@@ -29,7 +29,7 @@ def process(event,function_name):
     state = verfiyDataAvailable(couch,function_id,img_checksum,"sanity")
 
     if state is not None:
-        print("\n**Duplicated data**")
+        print("\n**Duplicate data**")
         return state
 
     #create data if not present
@@ -48,7 +48,7 @@ def process(event,function_name):
         ref = data['reference']
 
         addMinioRef(couch, function_id, img_checksum, ref)
-
+    print("\n**Unique data**")
     return ref
 
 '''
