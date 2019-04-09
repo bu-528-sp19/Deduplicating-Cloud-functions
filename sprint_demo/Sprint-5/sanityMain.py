@@ -40,7 +40,7 @@ def process(event,function_name):
 
     command = "wsk -i action invoke weatherhit"
     execute(command)
-    print(file_name+" Invoked Successfully")
+    print(function_name+" Invoked Successfully")
     time.sleep(5)
     obj = getObject(mc, "minio_log.json", "store")
     with open(obj) as json_file:

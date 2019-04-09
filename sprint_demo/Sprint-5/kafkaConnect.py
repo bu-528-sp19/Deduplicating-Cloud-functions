@@ -17,8 +17,8 @@ def kafka_consumer(topic_name,function_name):
         json_data = json.loads(message.value)
         bucket_name = json_data['Key'].split('/')[0]
         if (json_data['EventName'] == 's3:ObjectCreated:Put' and bucket_name == 'test1'):
-            print('\nInput Bucket :', bucket_name)
-            print('Input File name :', json_data['Key'].split('/')[1])
+            #print('\nInput Bucket :', bucket_name)
+            #print('Input File name :', json_data['Key'].split('/')[1])
             with open('kafka_log.json', 'w') as outfile:
                 json.dump(json_data, outfile)
 
@@ -29,7 +29,7 @@ def kafka_consumer(topic_name,function_name):
                 output_reference = process(json_data['Key'],function_name)
                 print('Output File reference :', output_reference)
                 end = time.time()
-                print("\nTotal time execution - ",end - start+" sec(s)\n")
+                print("Total time execution - "+str(end - start - 5)+" sec(s)\n")
             except ResponseError as err:
                 print(err)
 
