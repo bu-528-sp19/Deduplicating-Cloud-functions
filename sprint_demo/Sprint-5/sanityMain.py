@@ -29,7 +29,7 @@ def process(event,function_name):
     state = verfiyDataAvailable(couch,function_id,img_checksum,"sanity")
 
     if state is not None:
-        print("\n**Duplicate data**")
+        print("\n**Duplicate Data**")
         return state
 
     #create data if not present
@@ -38,7 +38,7 @@ def process(event,function_name):
     #create command that makes an action
     action_name = "random"
 
-    command = "wsk -i action invoke weatherhit"
+    command = "wsk -i action invoke weather"
     execute(command)
     print(function_name+" Invoked Successfully")
     time.sleep(5)
@@ -53,7 +53,7 @@ def process(event,function_name):
 
 '''
     else:
-        # code to put the ref name in couuchdb
+        # code to put the ref name in couchdb
         addMinioRef(couch, function_id, img_checksum, event)
         return event
 '''
