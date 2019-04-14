@@ -38,7 +38,7 @@ def process(event,function_name):
     #create command that makes an action
     action_name = "random"
 
-    command = "wsk -i action invoke weather"
+    command = "wsk -i action invoke weatherhit"
     execute(command)
     print(function_name+" Invoked Successfully")
     time.sleep(5)
@@ -53,7 +53,7 @@ def process(event,function_name):
 
 '''
     else:
-        # code to put the ref name in couchdb
+        # code to put the ref name in couuchdb
         addMinioRef(couch, function_id, img_checksum, event)
         return event
 '''
