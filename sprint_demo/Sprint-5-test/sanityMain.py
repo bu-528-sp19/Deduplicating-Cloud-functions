@@ -9,7 +9,7 @@ def process(event,function_name,user_name):
     bucket_name = event.split('/')[0]
     file_name = event.split('/')[1]
 
-    function_id = calculate_checksum(function_name)
+    function_id = calculate_checksum("weather.py")
     mc = connect_minio()
     obj = getObject(mc, file_name, bucket_name)
     img_checksum = calculate_checksum(obj)
@@ -26,11 +26,12 @@ def process(event,function_name,user_name):
     #create data if not present
     addInputDataIfNotExist(couch,userdocId,function_id,img_checksum)
 
-    command = "wsk -i action invoke weatherhit"
+    command = "wsk -i action invoke "+function_name
     execute(command)
     print(function_name+" Invoked Successfully")
     time.sleep(5)
 
+    
     obj = getObject(mc, "minio_log.json", "store")
     with open(obj) as json_file:
         data = json.load(json_file)
