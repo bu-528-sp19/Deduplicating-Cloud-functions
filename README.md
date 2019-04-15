@@ -128,7 +128,12 @@ First, a user will configure and define functions and their inputs and output in
 
 ## 5. Acceptance criteria
 
-Minimum acceptance criteria is to prevent data duplication which in turn would prevent event duplication. 
+Minimum acceptance criteria are:
+
+  * To prevent data duplication which in turn would prevent event duplication.
+  * Implement different usecases for the same
+  * The architecture should able to cater different usecases (Generalizing the architecture)
+  * User should interact with the framework through CLI
 
 The stretch goals are:
 
