@@ -21,7 +21,7 @@ def process(event,function_name,user_name):
 
     if state is not None:
         print("\n**Duplicate Data**")
-        print(state)
+        return state
 
     #create data if not present
     addInputDataIfNotExist(couch,userdocId,function_id,img_checksum)

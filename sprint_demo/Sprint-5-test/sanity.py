@@ -26,8 +26,9 @@ if __name__ == '__main__':
 
     input_bucket = arguments.get('<input>')
     output_bucket = arguments.get('<output>')
-    function_name = arguments.get('<function>')
+    function_name = arguments.get('<function/action>')
     user_name = arguments.get('<username>')
+    print("\n***Welcome "+ user_name + "***")
 
     mc = connect_minio()
     #createBucket(mc,input_bucket)

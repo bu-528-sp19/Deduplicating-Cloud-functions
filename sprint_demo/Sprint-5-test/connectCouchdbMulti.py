@@ -24,7 +24,7 @@ def addMinioRef(couch,userdocId,functionChecksum,dataChecksum,minioRef):
         print("The input data checksum ",dataChecksum," not available")
 
 
-def authenticateUser(username, password):
+def authenticateUser(username, password=""):
     #toHash = username.encode('utf-8')
     #hash_object = hashlib.md5(toHash)
     #hashedUsername = hash_object.hexdigest()

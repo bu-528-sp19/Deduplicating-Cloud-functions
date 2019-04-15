@@ -6,9 +6,9 @@ from connectCouchdb import connect_couchdb,addFunctionIfNotExist
 
 def connect_minio():
     mc = Minio('52.116.33.131:9000',
-                   access_key='Q3AM3UQ867SPQQA43P2F',
-                   secret_key='zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG',
-                   secure=True)
+                   access_key='sanity',
+                   secret_key='CloudforAll!',
+                   secure=False)
 
     return mc
 
