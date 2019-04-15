@@ -118,13 +118,6 @@ First, a user will configure and define functions and their inputs and output in
 |:--:| 
 | *Figure 3: Proposed Architecture* |
 
-Design Implications and Discussion:
-
-Figure 4 shows the overall architecture for Sanity System. 
-
-|![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/images/arch.PNG)|
-|:--:| 
-| *Figure 4:Overall Architecture for Sanity System* |
 
 * **Data Storage** has the actual data from the multiple live running containers without any annotations or filtering.
 * **Data Curation** filters each data event using either POV/filter based duplication. Then, it checks the checksum for each incoming data.
