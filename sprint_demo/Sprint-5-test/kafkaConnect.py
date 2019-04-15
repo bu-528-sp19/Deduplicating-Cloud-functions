@@ -4,9 +4,10 @@ from json import loads
 from sanityMain import process
 from minio.error import ResponseError
 from minio import Minio
+from connectMinio import connect_minio
 import time
 
-def kafka_consumer(topic_name,function_name):
+def kafka_consumer(topic_name,function_name,user_name):
 
     consumer = KafkaConsumer(
         topic_name,
@@ -22,11 +23,11 @@ def kafka_consumer(topic_name,function_name):
             with open('kafka_log.json', 'w') as outfile:
                 json.dump(json_data, outfile)
 
-            minioClient = Minio('52.116.33.131:9000', access_key='sanity', secret_key='CloudforAll!', secure=False)
+            minioClient = connect_minio()
             try:
                 start = time.time()
                 minioClient.fput_object('store', 'kafka_log.json', 'kafka_log.json')
-                output_reference = process(json_data['Key'],function_name)
+                output_reference = process(json_data['Key'],function_name,user_name)
                 print('Output File Reference :', output_reference)
                 end = time.time()
                 print("Total Time Execution : "+str(end - start)+" sec(s)\n")

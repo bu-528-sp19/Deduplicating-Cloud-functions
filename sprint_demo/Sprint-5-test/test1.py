@@ -1,59 +1,83 @@
-import sys
-import json
-import os
-import requests
-from minio import Minio
-from minio.error import ResponseError
-from PIL import Image
-from kafka import KafkaConsumer
-from json import loads
+import couchdb
 
+def connect_couchdb():
+    couch = couchdb.Server("http://52.116.33.131:5984")
+    return couch
 
-client = Minio('52.116.33.131:9000',
-               access_key='sanity',
-               secret_key='CloudforAll!',
-               secure=False)
+def addFunctionIfNotExist(couch,functionChecksum,user_name,db_name="sanity",map_db_name="user"):
 
+    if db_name not in couch:
+        db = couch.create(db_name)
+    if map_db_name not in couch:
+        db = couch.create(map_db_name)
+        doc = {}
+        db.save(doc)
 
-# getting the kafka logs file from Minio Cloud Store
-client.fget_object('store', 'kafka_log.json', 'kafka_log.json')
+    addUserIfNotExist(couch,user_name)
+    db = couch[map_db_name]
+    for id in db:
+        doc = db[id]
+        getId = doc[user_name]
 
-with open('kafka_log.json') as file:
-    data = json.load(file)
+    db = couch[db_name]
+    docs = db[getId]
+    if functionChecksum not in docs:
+        docs[functionChecksum] = {}
+    db.save(docs)
 
-# getting bucket and object name from logs
-file_location = data["Key"]
-bucket_name = file_location.split('/')[0]
-file_name = file_location.split('/')[1]
-print(file_name)
-# getting object from Minio
-try:
-    client.fget_object(bucket_name, file_name, 'local.jpg')
-except ResponseError as err:
-    print(err)
+def addUserIfNotExist(couch,userName,map_db_name="user"):
+    #check is user already exist
+    db = couch[map_db_name]
+    for id in db:
+        doc = db[id]
+        if userName not in doc:
+            userId = createUserDoc(couch)
+            doc = {
+                userName: userId
+            }
+            db.save(doc)
+            return True
 
+def createUserDoc(couch,db_name="sanity"):
 
-im = Image.open('local.jpg')
-im.thumbnail((120,120), Image.ANTIALIAS)
-new_file_name = (file_name.split('.')[0]) + '-thumbnail.jpg'
-im.save(new_file_name)
-print("Thumbnail generated", new_file_name)
+    db = couch[db_name]
+    doc = {
+    }
+    db.save(doc)
 
-try:
-    client.fput_object('test2', new_file_name, new_file_name)
-except ResponseError as err:
-    print(err)
+    return doc['_id']
 
-# storing thumbnail reference in json format in store bucket
-location = "test2" + "/" + new_file_name
-reference = {"reference":location}
+def addInputDataIfNotExist(couch,functionChecksum,inputChecksum,db_name="sanity"):
+    db = couch[db_name]
+    for id in db:
+        doc = db[id]
+        if inputChecksum not in doc[functionChecksum]:
 
-# storing reference in JSON
-with open('minio_log.json', 'w') as file:
-    json.dump(reference, file)
+            doc[functionChecksum][inputChecksum]= ""
+            print(doc[functionChecksum][inputChecksum])
+            db.save(doc)
 
-# storing JSON in Minio store bucket
-try:
-    client.fput_object('store', 'minio_log.json', 'minio_log.json')
-except ResponseError as err:
-    print(err)
+def addMinioRef(couch,functionChecksum,inputChecksum,minioRef,db_name="sanity"):
+    db = couch[db_name]
+    for id in db:
+        doc = db[id]
+        if inputChecksum in doc[functionChecksum]:
+            doc[functionChecksum][inputChecksum]= minioRef
+            db.save(doc)
+        else:
+            print("The input checksum ",inputChecksum," not available")
+
+def verfiyDataAvailable(couch,functionChecksum,inputChecksum,db_name="sanity"):
+    db = couch[db_name]
+    for id in db:
+        doc = db[id]
+        if functionChecksum not in doc:
+            return None
+        if inputChecksum in doc[functionChecksum]:
+            return doc[functionChecksum][inputChecksum]
+        else:
+            return None
+
+c=connect_couchdb()
+addFunctionIfNotExist(c,"xyxxyxxyxxyx","Ashu")
+#addUserIfNotExist(c,"Ashu")

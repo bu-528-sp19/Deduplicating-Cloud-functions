@@ -4,23 +4,19 @@ def connect_couchdb():
     couch = couchdb.Server("http://52.116.33.131:5984")
     return couch
 
-def addFunctionIfNotExist(couch,functionChecksum,db_name="sanity"):
+def addFunctionIfNotExist(couch,functionChecksum,user_name,db_name="sanity"):
 
-    if db_name not in couch:
-        db = couch.create(db_name)
+    db = couch["mappings"]
+    getid = None
+    for id in db:
+        doc = db[id]
+        getId = doc[user_name]
 
-        doc = {
-            functionChecksum: {
-            }
-        }
-        db.save(doc)
-    else:
-        db = couch[db_name]
-        for doc in db:
-            docs = db[doc]
-            if functionChecksum not in docs:
-                docs[functionChecksum]={}
-            db.save(docs)
+    db = couch[db_name]
+    docs = db[getId]
+    if functionChecksum not in docs:
+        docs[functionChecksum] = {}
+    db.save(docs)
 
 def createUserDoc(couch,db_name="sanity"):
     if db_name not in couch:
