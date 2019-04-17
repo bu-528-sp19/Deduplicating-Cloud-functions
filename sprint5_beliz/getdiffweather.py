@@ -26,9 +26,9 @@ with open(file_name) as json_file:
     country = data['country']
 	
 ##input file to this function should be of the form(.json):
-##{'city':'Boston'}
-##{'country':'US'}
-##{'date':'04/18/2019'}
+##{'city':'Boston',
+##'country':'US',
+##'date':'04/18/2019'}
 
 
 #city_name = 'Boston,US'
