@@ -41,7 +41,7 @@ min_temp = r.json()['main']['temp_min']
 
 diff = int(max_temp) - int(min_temp)
 
-outputFile = "output"+file_name
+outputFile = "outputweather.txt"
 with open(outputFile, 'w') as fp:
     fp.write('Difference between max and min temperature is {:d}'.format(diff))
 	
