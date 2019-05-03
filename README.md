@@ -119,7 +119,7 @@ There are two types of functions in Serverless: Storage closed loop and External
 In our architecture, Sanity controller will be the heart of the design. It will be in communication with other components. 
 First, a user will configure and define functions and their inputs and output in .yml file that will feed to the Sanity Controller. Source data will come to the Minio then Sanity Controller will check whether the incoming data is unique with the help of CouchDB. If same data for same function is processed before Sanity Controller will get the result from Minio directly. However, if the data is unique it will get sent to the OpenWhisk and get executed there. The result will be sent to the Sanity Controller and finally to Minio. 
 
-|![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/images/ourarch.JPG)|
+|![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/final_architecture.JPG)|
 |:--:| 
 | *Figure 3: Our Architecture* |
 
