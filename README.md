@@ -143,7 +143,7 @@ _When unique data comes;_
 
 _When duplicate data comes;_
 
-
+ee
 |![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/final_architecture.JPG)|
 |:--:| 
 | *Figure 4: Our Architecture* |
