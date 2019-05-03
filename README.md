@@ -82,7 +82,15 @@ Serverless applications typically have data sources as IoT/sensor data, social m
 
 In the light of the above facts and the distributed storage and server architecture in serverless systems, an opportunity arises to build a specialized data de-duplication service which will de-duplicate the cloud function invocations.
 
-### Global Architectural Structure Of the Project:
+### Framework Architecture:
+
+Function Types 
+There are two types of functions in Serverless: Storage closed loop and External Stimuli. External stimuli functions get their input from data store then create external events whereas storage closed loop functions get their input from storage and also write their result to storage. The latter one is our main concern in this project.
+
+|![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/images/functiontypes.JPG)|
+|:--:| 
+| *Figure 1: Function Types in Serverless* |
+
 
 Ideally, we would implement such deduplication inside existing open serverless framework like [OpenWhisk](https://openwhisk.apache.org/), but given time constraint we will implement a POC, where we will build these dedup components *on-top of* OpenWhisk instead of inside OpenWhisk. So essentially, users now will interact with our layer instead of interacting with OpenWhisk directly.
 
@@ -90,6 +98,8 @@ Ideally, we would implement such deduplication inside existing open serverless f
  2. Users will register their functions that they want to execute for their data events
  
  Currently our framework supports multi-user.
+ 
+ Overall architecture of Sanity is shown in figure 2. Detailed information about components used can be found by visiting links below.
  
  Components of Sanity Framework: 
  
@@ -99,22 +109,11 @@ Ideally, we would implement such deduplication inside existing open serverless f
  * **Serverless Platform**: [Openwhisk](https://openwhisk.apache.org/)
  * **Sanity controller**
 
-### De-duplicating architecture 
-
-Function Types
-There are two types of functions in Serverless: Storage closed loop and External Stimuli. External stimuli functions get their input from data store then create external events whereas storage closed loop functions get their input from storage and also write their result to storage. The latter one is our main concern in this project.
-
-|![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/images/functiontypes.JPG)|
-|:--:| 
-| *Figure 1: Function Types in Serverless* |
-
-
-|![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/images/architecture_diagram_1.PNG)|
+|![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/images/sanity_pipeline.PNG)|
 |:--:| 
 | *Figure 2: Overall Architecture* |
 
-
-### Pipleline of the reference architecture
+### Pipleline of De-duplication
 
 In our architecture, Sanity controller will be the brain of the design. It will be in communication with other components. 
 
@@ -157,9 +156,12 @@ Controller cross-checks the checksum of the incoming data/function for the onlin
 | *Figure 4: Our Architecture* |
 
 
-## CLI: How a user can run functions on Sanity
+## How a user can run functions on Sanity
 
+We provide a command line interface for Sanity users to easily use our framework. The following command can be used to execute a desired function.
+```
 sanity --i  <input_bucket> --o <output_bucket>  --f   <function_name>
+```
 
 ## [Our project video](add link)
 
@@ -178,7 +180,7 @@ Minimum acceptance criteria is currently achieved.
 
   * Implement multi-thread to Sanity
   * Improve user authentication
-   * Currently, the system is not password protected, support will be added.
+     * Currently, the system is not password protected, support will be added.
   * Benchmark the whole framework and write an academic article according to the results
   * Generalize sanity to support multiple serverless platforms
 
