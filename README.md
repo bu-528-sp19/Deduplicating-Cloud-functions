@@ -88,11 +88,15 @@ Ideally, we would implement such deduplication inside existing open serverless f
 
  1. Users will register their data sources (IoT, System logs, etc.) to our service (sanity)
  2. Users will register their functions that they want to execute for their data events
- 3. Sanity controller components
-    * **Cloud Object Store** : We will use minio which is open source (add a link to minio or reference)
-    * **Message/Event Buffer**: We will use kafka(add link or ref)
-    * **Deduplication controller**: We will maintain data dedup index
-    * **Function controller**: That decides whether data if unique and needs to be invoked on OpenWhisk or it is duplicate and we can           avoid invoking it 
+ 
+ Currently our framework supports multi-user.
+ 
+ Components of Sanity Framework
+    * **Cloud Object Store** : [Minio](https://min.io/)
+    * **Message/Event Buffer**: [Kafka](https://kafka.apache.org/)
+    * **Database** : [CouchDB](http://couchdb.apache.org/) 
+    * **Serverless Platform**: [Openwhisk](https://openwhisk.apache.org/)
+    * **Sanity controller**
 
 ### De-duplicating architecture 
 
@@ -111,12 +115,12 @@ There are two types of functions in Serverless: Storage closed loop and External
 
 ### Pipleline of the reference architecture
 
-In our proposed architecture, Sanity controller will be the heart of the design. It will be in communication with other subparts. 
-First, a user will configure and define functions and their inputs and output in .yml file that will feed to the Sanity Controller. Source data will come to the Minio then Sanity Controller will check whether the incoming data is unique with the help of Redis. If same data for same function is processed before Sanity Controller will get the result from Minio directly. However, if the data is unique it will get sent to the OpenWhisk and get executed there. The result will be sent to the Sanity Controller and finally to Minio. 
+In our architecture, Sanity controller will be the heart of the design. It will be in communication with other components. 
+First, a user will configure and define functions and their inputs and output in .yml file that will feed to the Sanity Controller. Source data will come to the Minio then Sanity Controller will check whether the incoming data is unique with the help of CouchDB. If same data for same function is processed before Sanity Controller will get the result from Minio directly. However, if the data is unique it will get sent to the OpenWhisk and get executed there. The result will be sent to the Sanity Controller and finally to Minio. 
 
 |![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/images/ourarch.JPG)|
 |:--:| 
-| *Figure 3: Proposed Architecture* |
+| *Figure 3: Our Architecture* |
 
 
 * **Data Storage** has the actual data from the multiple live running containers without any annotations or filtering.
@@ -125,6 +129,16 @@ First, a user will configure and define functions and their inputs and output in
 * **Function Rule Map** stores the rules to associate data events with respective functions.
 * **Function dupMap** maintains checksum of all unique input data processed by each function.
 
+_When unique data comes;_
+
+_When duplicate data comes;_
+
+
+## CLI: How a user can run functions on Sanity
+
+sanity --i  <input_bucket> --o <output_bucket>  --f   <function_name>
+
+## [Our project video]()
 
 ## 5. Acceptance criteria
 
@@ -135,15 +149,18 @@ Minimum acceptance criteria are:
   * The architecture should able to cater different usecases (Generalizing the architecture)
   * User should interact with the framework through CLI
 
-The stretch goals are:
+Minimum acceptance criteria is currently achieved.
 
-  * Integrate and contribute our code to OpenWhisk
-  * Write a paper on this work for international conferences/workshops
+## 6. Future Steps:
 
+  * Implement multi-thread to Sanity
+  * Improve user authentication
+  * Benchmark the framework and write an academic article according to the results
+  * Generalize sanity to support multiple serverless platforms
 
 ## 6.  Release Planning:
 
-Sprint 1(Due to 2.14):: 
+Sprint 1(Due to 2.14): 
   * Familiarize ourselves with Serverless Technology
   * Get detail understanding on the internal working of the standard open serverless framework, viz. [OpenWhisk](https://openwhisk.apache.org/)
   * Learn about storage deduplication techniques
