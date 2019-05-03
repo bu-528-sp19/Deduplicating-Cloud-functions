@@ -109,7 +109,7 @@ Ideally, we would implement such deduplication inside existing open serverless f
  * **Serverless Platform**: [Openwhisk](https://openwhisk.apache.org/)
  * **Sanity controller**
 
-|![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/images/sanity_pipeline.PNG)|
+|![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/sanity_pipeline.PNG)|
 |:--:| 
 | *Figure 2: Overall Architecture* |
 
