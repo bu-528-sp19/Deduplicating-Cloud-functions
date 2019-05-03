@@ -66,7 +66,7 @@ The final product of this project will be a de-duplication service that leverage
 
 **What will not be delivered?**
 
-* This framework does not help save storage space since for every new data coming original data is stored multiple times.(fix this or delete it)
+* This framework does not help save storage space since for every new data coming original data is stored multiple times.**(fix this or delete it)**
 
 * This system can only be implemented on storage closed-loop functions, which takes data from data storage and writes the result again to the data storage. However, external stimuli functions are not the part of this de-duplication design because they take their data from storage but then trigger external events.
 
@@ -84,7 +84,7 @@ In the light of the above facts and the distributed storage and server architect
 
 ### Architecture of the Framework:
 
-Function Types 
+**Function Types** 
 There are two types of functions in Serverless: Storage closed loop and External Stimuli. External stimuli functions get their input from data store then create external events whereas storage closed loop functions get their input from storage and also write their result to storage. The latter one is our main concern in this project.
 
 |![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/images/functiontypes.JPG)|
@@ -125,7 +125,7 @@ Upload a file to a Minio bucket:
 ```
 mc cp <input_file> myminio/<input_bucket>
 ```
-Invoke the function with the uploaded file as an input and store the result in output_bucket:
+Invoke the function (with wsk client) with the uploaded file as an input and store the result in output_bucket:
 ```
 wsk -i action invoke myfunction <input_bucket>/<input_file> <output_bucket>
 ```
@@ -182,8 +182,7 @@ This project was a great learning curve for us as it exposed us to the real prob
 
 Minimum acceptance criteria are:
 
-  * To prevent data duplication which in turn would prevent event duplication.
-  * Implement different usecases for the same
+  * To prevent data duplication which in turn would prevent unnecessary function execution.
   * The architecture should able to cater different usecases (Generalizing the architecture)
   * User should interact with the framework through CLI
 
@@ -191,17 +190,18 @@ Minimum acceptance criteria is currently achieved.
 
 ## 6. Future Steps & Limitations:
 
-Limitations:
+**Limitations:**
   * Does not handle multiple requests
   * Concentrated only on single deduplication technique
-  * Authorization and authentication
+  * Authorization and authentication mechanisms are weak or nonexistent
 
-Future Steps:
+**Future Steps:**
   * Implement multi-thread to Sanity
   * Improve user authentication
      * Currently, the system is not password protected, support will be added.
   * Benchmark the whole framework and write an academic article according to the results
   * Generalize sanity to support multiple serverless platforms
+  * Enhancing the deduplication techniques
 
 ## 7.  Release Planning:
 
