@@ -84,7 +84,7 @@ In the light of the above facts and the distributed storage and server architect
 
 ### Global Architectural Structure Of the Project:
 
-Ideally, we would implement such deduplication inside existing open serverless framework like OpenWhisk(add link or ref), but given time constraint we will implement a POC, where we will build these dedup components *on-top of* OpenWhisk instead of inside OpenWhisk. So essentially, users now will interact with our layer instead of interacting with OpenWhisk directly.
+Ideally, we would implement such deduplication inside existing open serverless framework like [OpenWhisk](https://openwhisk.apache.org/), but given time constraint we will implement a POC, where we will build these dedup components *on-top of* OpenWhisk instead of inside OpenWhisk. So essentially, users now will interact with our layer instead of interacting with OpenWhisk directly.
 
  1. Users will register their data sources (IoT, System logs, etc.) to our service (sanity)
  2. Users will register their functions that they want to execute for their data events
@@ -116,19 +116,34 @@ There are two types of functions in Serverless: Storage closed loop and External
 
 ### Pipleline of the reference architecture
 
-In our architecture, Sanity controller will be the heart of the design. It will be in communication with other components. 
-First, a user will configure and define functions and their inputs and output in .yml file that will feed to the Sanity Controller. Source data will come to the Minio then Sanity Controller will check whether the incoming data is unique with the help of CouchDB. If same data for same function is processed before Sanity Controller will get the result from Minio directly. However, if the data is unique it will get sent to the OpenWhisk and get executed there. The result will be sent to the Sanity Controller and finally to Minio. 
+In our architecture, Sanity controller will be the brain of the design. It will be in communication with other components. 
+
+A user can define functions on wsk client:
+`wsk -i action create myfunction.py myfunction`
+Upload a file to a Minio bucket:
+`mc cp <input_file> myminio/<input_bucket>`
+Invoke the function with the uploaded file as an input and store the result in output_bucket:
+`wsk -i action invoke myfunction <input_bucket>/<input_file> <output_bucket>`
+
+In Sanity, each user has their own database document in CouchDB that is hold seperately. In that document also every function has their own inputs registered. Previously provided inputs for a specific function are registered in database under that function for deduplicating purposes. That is, in a sample user document shown in figure xxx, there are two functions registered for that user: "testfunc_1" and "testfunc_2". Those two functions has two different input data registered each such as "testfunc_1" has "testdata_1a" and "testdata_1b" as its previously used inputs and similarly "testfunc_2" has "testdata_2a" and "testdata_2b" as its previously used inputs. The values of these input data which are shown empty in figure would be the inio bucket reference locations of the results when executed with that specific function. For example, let's say the user executed "testfunc_1" with "testdata_1a" as the input and the result is recorded to "func1_outbucket" and the name of the resulting output file is "outdata_1a". In that case the CouchDB schema will look like this:
+
+```JSON
+"testfunc_1" : {
+     "testdata_1a" : "func1_outbucket/outdata_1a"
+}
+```
+
+![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/couchdb_user_schema.PNG)
+
+
+Examples above used real names of functions and data however, these are used for simplicity. In our framework we use hashes of functions and data to determine uniqueness. Note that, this way even if two equal functions/data with different names comes to our framework, Sanity is able to detect those functions/data are same by comparing hashes and de-duplicate accordingly.
+
 
 |![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/final_architecture.JPG)|
 |:--:| 
 | *Figure 3: Our Architecture* |
 
 
-* **Data Storage** has the actual data from the multiple live running containers without any annotations or filtering.
-* **Data Curation** filters each data event using either POV/filter based duplication. Then, it checks the checksum for each incoming data.
-* **Sanity Controller** indexes each event into the hashmap which identifies if the event is duplicate for a function. If the event is duplicate, it gets the output reference for the result from the earlier invocation.
-* **Function Rule Map** stores the rules to associate data events with respective functions.
-* **Function dupMap** maintains checksum of all unique input data processed by each function.
 
 _When unique data comes;_
 
