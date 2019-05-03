@@ -152,7 +152,7 @@ _When duplicate data comes;_
 
 Controller cross-checks the checksum of the incoming data/function for the online user with CouchDB. Controller decides that the data is duplicate (i.e. used before). Then, controller gets the location information of the output data from CouchDB and get the output from related minio bucket in oreder to provide to the user. This process is shown in figure 4 with red arrows.
 
-|![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/final_architecture.JPG)|
+|![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/final_arch.PNG)|
 |:--:| 
 | *Figure 4: Our Architecture* |
 
@@ -178,7 +178,8 @@ Minimum acceptance criteria is currently achieved.
 
   * Implement multi-thread to Sanity
   * Improve user authentication
-  * Benchmark the framework and write an academic article according to the results
+   * Currently, the system is not password protected, support will be added.
+  * Benchmark the whole framework and write an academic article according to the results
   * Generalize sanity to support multiple serverless platforms
 
 ## 6.  Release Planning:
