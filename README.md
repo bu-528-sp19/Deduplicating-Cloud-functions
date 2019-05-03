@@ -82,7 +82,7 @@ Serverless applications typically have data sources as IoT/sensor data, social m
 
 In the light of the above facts and the distributed storage and server architecture in serverless systems, an opportunity arises to build a specialized data de-duplication service which will de-duplicate the cloud function invocations.
 
-### Framework Architecture:
+### Architecture of the Framework:
 
 Function Types 
 There are two types of functions in Serverless: Storage closed loop and External Stimuli. External stimuli functions get their input from data store then create external events whereas storage closed loop functions get their input from storage and also write their result to storage. The latter one is our main concern in this project.
@@ -99,7 +99,7 @@ Ideally, we would implement such deduplication inside existing open serverless f
  
  Currently our framework supports multi-user.
  
- Overall architecture of Sanity is shown in figure 2. Detailed information about components used can be found by visiting links below.
+ Overall architecture of Sanity is shown in figure 2. Detailed information about components used can be found by visiting links below. The architecture will be explained in detail with relating it to deduplication flow in the next chapter.
  
  Components of Sanity Framework: 
  
@@ -160,10 +160,23 @@ Controller cross-checks the checksum of the incoming data/function for the onlin
 
 We provide a command line interface for Sanity users to easily use our framework. The following command can be used to execute a desired function.
 ```
-sanity --i  <input_bucket> --o <output_bucket>  --f   <function_name>
+sanity --i  <input_bucket> --o <output_bucket>  --f  <function_name> --u <user_name>
 ```
 
 ## [Our project video](add link)
+
+## Learnings
+
+* Internal working of any serverless platform
+* Working of kafka and minio
+* How to interact with two servers in a cloud environment
+* Building custom docker image for each use case
+* Interaction between multiple dockers
+* Got a chance to Interact with open source community(Openwhisk) and contribute towards it
+* While developing schema of Couchdb, we got to know about the power of Couchdb
+
+This project was a great learning curve for us as it exposed us to the real problems in the cloud and how we could tackle. Now we know where to start and how to proceed when a problem is given to us.
+
 
 ## 5. Acceptance criteria
 
@@ -176,8 +189,14 @@ Minimum acceptance criteria are:
 
 Minimum acceptance criteria is currently achieved.
 
-## 6. Future Steps:
+## 6. Future Steps & Limitations:
 
+Limitations:
+  * Does not handle multiple requests
+  * Concentrated only on single deduplication technique
+  * Authorization and authentication
+
+Future Steps:
   * Implement multi-thread to Sanity
   * Improve user authentication
      * Currently, the system is not password protected, support will be added.
@@ -211,7 +230,7 @@ Sprint 5(Due to 4.18):
   * Savings in avoiding function (container) invocations
     * Savings in time to execute the function 
     * Savings in time accessing duplicate data from COS
-
+    
 ## References
 
  * What is Data deduplication and it's uses: 
