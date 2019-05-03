@@ -153,7 +153,7 @@ Controller cross-checks the checksum of the incoming data/function for the onlin
 
 |![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/final_arch.PNG)|
 |:--:| 
-| *Figure 4: Our Architecture* |
+| *Figure 4: Design Flow* |
 
 
 ## How a user can run functions on Sanity
@@ -184,7 +184,7 @@ Minimum acceptance criteria is currently achieved.
   * Benchmark the whole framework and write an academic article according to the results
   * Generalize sanity to support multiple serverless platforms
 
-## 6.  Release Planning:
+## 7.  Release Planning:
 
 Sprint 1(Due to 2.14): 
   * Familiarize ourselves with Serverless Technology
