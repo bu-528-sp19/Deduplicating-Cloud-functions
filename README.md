@@ -1,6 +1,6 @@
 ** **
 
-## Deduplicating-Cloud-functions 
+# Deduplicating-Cloud-functions 
 
 Deduplication is useful for organizations dealing with highly redundant operations that requires constant copying and storing of data for future reference or recovery purpose. 
 
@@ -19,8 +19,13 @@ With the massive data explosion, technologies that offers approaches to efficien
 The purpose of this project is to design and implement a novel storage de-duplication framework for serverless platform in order to improve overall throughput of the platform.
 
 ** **
+- [asutosh](#asutosh-patra)
+- [Vision and Goals Of The Project](#vision-and-goals-of-the-project)
+- [Users/Personas Of The Project](#users/personas-of-the-project)
+- [Scope and Features Of The Project](#scope-and-features-of-the-project)
 
-## 1. Vision and Goals Of The Project:
+## Asutosh Patra
+## Vision and Goals Of The Project
 
 The final product of this project will be a de-duplication service that leverages application-aware semantic-equivalence to identify duplicate data at storage system and avoids redundant invocation of functions on servers. Main goals include:
 
@@ -30,7 +35,7 @@ The final product of this project will be a de-duplication service that leverage
   * Demonstrate the efficiency in performing function deduplication by deduplicating data
   
 
-## 2. Users/Personas Of The Project:
+## Users/Personas Of The Project
 
 **It does not target:**
 
@@ -44,7 +49,7 @@ The final product of this project will be a de-duplication service that leverage
 
 ** **
 
-## 3.   Scope and Features Of The Project:
+## Scope and Features Of The Project
 
 **What will be delivered?**
 
