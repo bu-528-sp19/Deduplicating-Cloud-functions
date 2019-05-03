@@ -119,13 +119,18 @@ There are two types of functions in Serverless: Storage closed loop and External
 In our architecture, Sanity controller will be the brain of the design. It will be in communication with other components. 
 
 A user can define functions on wsk client:
-```wsk -i action create myfunction.py myfunction```
+```
+wsk -i action create myfunction.py myfunction
+```
 Upload a file to a Minio bucket:
-```mc cp <input_file> myminio/<input_bucket>```
+```
+mc cp <input_file> myminio/<input_bucket>
+```
 Invoke the function with the uploaded file as an input and store the result in output_bucket:
-```wsk -i action invoke myfunction <input_bucket>/<input_file> <output_bucket>```
-
-In Sanity, each user has their own database document in CouchDB that is hold seperately. In that document also every function has their own inputs registered. Previously provided inputs for a specific function are registered in database under that function for deduplicating purposes. That is, in a sample user document shown in figure 3, there are two functions registered for that user: "testfunc_1" and "testfunc_2". Those two functions has two different input data registered each such as "testfunc_1" has "testdata_1a" and "testdata_1b" as its previously used inputs and similarly "testfunc_2" has "testdata_2a" and "testdata_2b" as its previously used inputs. The values of these input data which are shown empty in figure would be the inio bucket reference locations of the results when executed with that specific function. For example, let's say the user executed "testfunc_1" with "testdata_1a" as the input and the result is recorded to "func1_outbucket" and the name of the resulting output file is "outdata_1a". In that case the CouchDB schema will look like this:
+```
+wsk -i action invoke myfunction <input_bucket>/<input_file> <output_bucket>
+```
+In Sanity, each user has their own database document in CouchDB that is hold seperately. Sanity, currently supports multi-user. When a user comes, Sanity first checks if the user already exists in the framework by checking a special DB created in couchDB. If the user is a new user, that user is registered to our framework and assigned a database document. In that document also every function has their own inputs registered. Previously provided inputs for a specific function are registered in database under that function for deduplicating purposes. That is, in a sample user document shown in figure 3, there are two functions registered for that user: "testfunc_1" and "testfunc_2". Those two functions has two different input data registered each such as "testfunc_1" has "testdata_1a" and "testdata_1b" as its previously used inputs and similarly "testfunc_2" has "testdata_2a" and "testdata_2b" as its previously used inputs. The values of these input data which are shown empty in figure would be the inio bucket reference locations of the results when executed with that specific function. For example, let's say the user executed "testfunc_1" with "testdata_1a" as the input and the result is recorded to "func1_outbucket" and the name of the resulting output file is "outdata_1a". In that case the CouchDB schema will look like this:
 
 ```JSON
 "testfunc_1" : {
@@ -141,9 +146,12 @@ Examples above used real names of functions and data however, these are used for
 
 _When unique data comes;_
 
+Incoming data is recorded in a minio bucket. Kafka captures this event and streams for further processing. Sanity Controller gets the necessary info from Kafka stream. Controller cross-checks the checksum of the incoming data/function for the online user with CouchDB. Controller decides that the data is unique (i.e. never used before). Then, controller send invokes Openwhisk function to execute with the unique data. Openwhisk runs the function and generates an output. The output reference (bucket and file name) is saved to CouchDB as the value of the unique data. This process is shown in figure 4 with blue arrows.
+
 _When duplicate data comes;_
 
-ee
+Controller cross-checks the checksum of the incoming data/function for the online user with CouchDB. Controller decides that the data is duplicate (i.e. used before). Then, controller gets the location information of the output data from CouchDB and get the output from related minio bucket in oreder to provide to the user. This process is shown in figure 4 with red arrows.
+
 |![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/final_architecture.JPG)|
 |:--:| 
 | *Figure 4: Our Architecture* |
@@ -153,7 +161,7 @@ ee
 
 sanity --i  <input_bucket> --o <output_bucket>  --f   <function_name>
 
-## [Our project video]()
+## [Our project video](add link)
 
 ## 5. Acceptance criteria
 
