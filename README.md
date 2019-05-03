@@ -91,13 +91,13 @@ Ideally, we would implement such deduplication inside existing open serverless f
  
  Currently our framework supports multi-user.
  
- Components of Sanity Framework:
+ Components of Sanity Framework: 
  
-    * **Cloud Object Store** : [Minio](https://min.io/)
-    * **Message/Event Buffer**: [Kafka](https://kafka.apache.org/)
-    * **Database** : [CouchDB](http://couchdb.apache.org/) 
-    * **Serverless Platform**: [Openwhisk](https://openwhisk.apache.org/)
-    * **Sanity controller**
+ * **Cloud Object Store** : [Minio](https://min.io/)
+ * **Message/Event Buffer**: [Kafka](https://kafka.apache.org/)
+ * **Database** : [CouchDB](http://couchdb.apache.org/) 
+ * **Serverless Platform**: [Openwhisk](https://openwhisk.apache.org/)
+ * **Sanity controller**
 
 ### De-duplicating architecture 
 
