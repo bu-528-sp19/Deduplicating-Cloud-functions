@@ -109,7 +109,7 @@ Ideally, we would implement such deduplication inside existing open serverless f
  * **Serverless Platform**: [Openwhisk](https://openwhisk.apache.org/)
  * **Sanity controller**
 
-|![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/sanity_pipeline.PNG)|
+|![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/images/sanity_pipeline.PNG)|
 |:--:| 
 | *Figure 2: Overall Architecture* |
 
@@ -151,7 +151,7 @@ _When duplicate data comes;_
 
 Controller cross-checks the checksum of the incoming data/function for the online user with CouchDB. Controller decides that the data is duplicate (i.e. used before). Then, controller gets the location information of the output data from CouchDB and get the output from related minio bucket in oreder to provide to the user. This process is shown in figure 4 with red arrows.
 
-|![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/final_arch.PNG)|
+|![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/images/final_arch.PNG)|
 |:--:| 
 | *Figure 4: Design Flow* |
 
