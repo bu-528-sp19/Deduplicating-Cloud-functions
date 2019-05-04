@@ -222,26 +222,26 @@ Minimum acceptance criteria is currently achieved.
 
 ## Release Planning
 
-Sprint 1(Due to 2.14): 
+#### Sprint 1(Due to 2.14): 
   * Familiarize ourselves with Serverless Technology
   * Get detail understanding on the internal working of the standard open serverless framework, viz. [OpenWhisk](https://openwhisk.apache.org/)
   * Learn about storage deduplication techniques
   * Read literature/papers on existing deduplication techniques addressing similar problems
   
-Sprint 2(Due to 2.28):
+#### Sprint 2(Due to 2.28):
   * Set up Kafka, Minio and other relevant features by implementing a use case.
   * Start working towards Sanity Controller
   
-Sprint 3(Due to 3.21):
+#### Sprint 3(Due to 3.21):
   * Developing the de duplication framework, sanity controller
   * Implement a use case (Image Thumbnail) to test the de duplication
   
-Sprint 4(Due to 4.04):
+#### Sprint 4(Due to 4.04):
   * Generalizing the sanity architecture for handling any kind of incoming data for deduplication
   * Benchmarking the current architecture on performing different use cases with and without sanity controller
   * Designing the CLI, using which User can interact with the sanity controller
 
-Sprint 5(Due to 4.18):
+#### Sprint 5(Due to 4.18):
   * Integrating CLI with the architecture
   * Evaluate performance savings of the system on different dimensions:
   * Savings in avoiding function (container) invocations
