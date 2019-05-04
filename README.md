@@ -11,7 +11,6 @@
     - [Background and Motivation](#background-&-motivation)
     - [Architecture](#architecture)
 - [Pipleline of De-duplication](#pipleline-of-de-duplication)
-- [Project Video](https://youtube.com)
 - [Learnings](#learnings)
 - [Acceptance Criteria](#acceptance-criteria)
 - [Future Steps & Limitations](#future-steps-&-limitations)
@@ -19,6 +18,7 @@
 - [References](#references)
 - [Mentor](#mentor)
 - [Contributors](#contributors)
+- [Project Video](https://youtube.com)
 
 ## About
 Deduplication is useful for organizations dealing with highly redundant operations that requires constant copying and storing of data for future reference or recovery purpose. 
@@ -255,12 +255,12 @@ Minimum acceptance criteria is currently achieved.
  * Sanity: The Less Server Architecture for Cloud functions(http://niltonbila.com/pub/Nadgowda-WoSC17.pdf)
 
 ## Mentor
-- Shripad J Nadgowda (IBM T J Research Center)
+- [Shripad J Nadgowda](#https://www.linkedin.com/in/shripad-nadgowda-8196949/) (IBM T J Research Center)
 
 ## Contributors
 
-- Beliz Kaleli 
-- Paritosh Shirodkar
-- Vikash Sahu
-- Asutosh Patra
+- [Beliz Kaleli](#https://github.com/belizkaleli) 
+- [Paritosh Shirodkar](#https://github.com/paritoshshirodkar)
+- [Vikash Sahu](#https://github.com/vikashsahu4)
+- [Asutosh Patra](#https://github.com/ashriku123)
 
