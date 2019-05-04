@@ -69,21 +69,16 @@ The final product of this project will be a de-duplication service that leverage
 
   * For providers who mostly deal with data generated from external end-points like IoT devices, cloud systems monitors, weather sensors, social media, mobile devices, etc
 
-  * By avoiding container startup latency: Since most platforms execute stateless functions inside containers, eliminating redundant activation of functions results in low latency.
-
 *  Presents a framework for improving “performance/cost” for end-users: 
 
     * End-users will use this framework indirectly which will, in turn, decrease the application cost for them since this framework increases throughput.
+    
+    * A framework which would work for any stateless function in a serverless environment.
 
-    * Availability to improve throughput by offering the user to define PoVs: PoVs(Point of Variability) are parts of the data that is not important for the execution and should be ignored such as metadata. Availability of letting the user choose those points allows a more fine-grained de-duplication.
-
-* Scalability: This novel storage de-duplication framework is designed and will be implemented for serverless execution model which in principle is flexible regarding scaling. An application can be scaled automatically or by adjusting its capacity through toggling the units of consumption.
-
-* Security: Security can be ensured by writing secure application code and tight access control over source code. 
-
+   
 **What will not be delivered?**
 
-* This framework does not help save storage space since for every unique data coming, data could be multiple for multiple users.**(fix this or delete it)**
+* This framework does not help save storage space since for every unique data coming, data could be multiple for multiple users.
 
 * This system can only be implemented on storage closed-loop functions, which takes data from data storage and writes the result again to the data storage. However, external stimuli functions are not the part of this de-duplication design because they take their data from storage but then trigger external events.
 
