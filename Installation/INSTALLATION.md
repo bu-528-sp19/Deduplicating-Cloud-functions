@@ -8,6 +8,8 @@
 -   Configure OpenWhisk in second VM
 -   Connect two VMs.Click [here](Openwhiskvm.md) for the setup
 -   Create a function, you want to deploy in OpenWhisk. Click [here](#steps-for-creating-a-function-in-openWhisk) for the setup
+-   Use the above created action name while running CLI as **function name**
+-   Follow [Getting started](#getting-started) for running the sanity
 
 ### Configure
 ##### Ubuntu User
@@ -23,6 +25,7 @@ pip3 install couchdb
 pip3 install docopt
 pip3 install kafka
 pip3 install minio
+pip3 install requests   
 ```
 ##### Clone the Github [Repository](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions.git)
 ```
@@ -42,6 +45,7 @@ python3 sanity.py --i <INPUT_BUCKET_NAME> --o <OUTPUT_BUCKET_NAME> --f <FUNCTION
 
 #####
 
+** **
 ### Steps for creating a function in OpenWhisk
 
 ##### Create a file named hello.py
