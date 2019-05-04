@@ -2,6 +2,25 @@
 
 # Deduplicating-Cloud-functions 
 
+## Documentation
+- [About](#about)
+- [Vision and Goals Of The Project](#vision-and-goals-of-the-project)
+- [Users/Personas Of The Project](#users/personas-of-the-project)
+- [Scope and Features Of The Project](#scope-and-features-of-the-project)
+- [Solution Concept](#solution-concept)
+    - [Background and Motivation](#background-&-motivation)
+    - [Architecture](#architecture)
+- [Pipleline of De-duplication](#pipleline-of-de-duplication)
+- [Project Video](https://youtube.com)
+- [Learnings](#learnings)
+- [Acceptance Criteria](#acceptance-criteria)
+- [Future Steps & Limitations](#future-steps-&-limitations)
+- [Release Planning](#release-planning)
+- [References](#references)
+- [Mentor](#mentor)
+- [Contributors](#contributors)
+
+## About
 Deduplication is useful for organizations dealing with highly redundant operations that requires constant copying and storing of data for future reference or recovery purpose. 
 
 The term is explained as an approach that eliminates duplicate copies of data from the system. For instance, a file that is backed up every week results in a lot of duplicate data and thus, eats up considerable disk space. Deduplication run an analysis and eliminates these sets of duplicate data and keeps only what is unique and essential, thus significantly clearing storage space. Here are some benefits of data deduplication for organizations.
@@ -19,20 +38,6 @@ With the massive data explosion, technologies that offers approaches to efficien
 The purpose of this project is to design and implement a novel storage de-duplication framework for serverless platform in order to improve overall throughput of the platform.
 
 ** **
-
-- [Vision and Goals Of The Project](#vision-and-goals-of-the-project)
-- [Users/Personas Of The Project](#users/personas-of-the-project)
-- [Scope and Features Of The Project](#scope-and-features-of-the-project)
-- [Solution Concept](#solution-concept)
-    - [Background and Motivation](#background-&-motivation)
-    - [Architecture](#architecture)
-- [Pipleline of De-duplication](#pipleline-of-de-duplication)
-- [Project Video](add link)
-- [Learnings](#learnings)
-- [Acceptance Criteria](#acceptance-criteria)
-- [Future Steps & Limitations](#future-steps-&-limitations)
-- [Release Planning](#release-planning)
-- [References](#references)
 
 ## Vision and Goals Of The Project
 
@@ -248,4 +253,14 @@ Sprint 5(Due to 4.18):
  * What is Data deduplication and it's uses: 
  (http://blog.webwerks.in/cloud-hosting-blog/what-are-the-real-benefits-of-data-deduplication-in-cloud)
  * Sanity: The Less Server Architecture for Cloud functions(http://niltonbila.com/pub/Nadgowda-WoSC17.pdf)
+
+## Mentor
+- Shripad J Nadgowda (IBM T J Research Center)
+
+## Contributors
+
+- Beliz Kaleli 
+- Paritosh Shirodkar
+- Vikash Sahu
+- Asutosh Patra
 
