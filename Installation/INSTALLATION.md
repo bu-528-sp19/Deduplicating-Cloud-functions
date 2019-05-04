@@ -16,25 +16,25 @@
 - [Setup OpenWhisk](https://github.com/apache/incubator-openwhisk/blob/master/ansible/README.md)
 
 ### Getting started
-#####Install all the Sanity dependencies
+##### Install all the Sanity dependencies
 ```
 pip3 install couchdb
 pip3 install docopt
 pip3 install kafka
 pip3 install minio
 ```
-#####Clone the Github [Repository](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions.git)
+##### Clone the Github [Repository](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions.git)
 ```
 git clone https://github.com/bu-528-sp19/Deduplicating-Cloud-functions.git 
 ```
 
-#####Change the directory
+##### Change the directory
 ```
 cd Deduplicating-Cloud-functions
 cd sanity/final
 ```
 
-#####Run the CLI
+##### Run the CLI
 ```
 python3 sanity.py --i <INPUT_BUCKET_NAME> --o <OUTPUT_BUCKET_NAME> --f <FUNCTION_NAME> --u <USER NAME>
 ```
