@@ -10,6 +10,7 @@
 - [Solution Concept](#solution-concept)
     - [Background and Motivation](#background-&-motivation)
     - [Architecture](#architecture)
+        - [Components](#components-of-sanity-framework)
 - [Pipleline of De-duplication](#pipleline-of-de-duplication)
 - [Learnings](#learnings)
 - [Acceptance Criteria](#acceptance-criteria)
@@ -120,7 +121,7 @@ Ideally, we would implement such deduplication inside existing open serverless f
  
  Overall architecture of Sanity is shown in figure 2. Detailed information about components used can be found by visiting links below. The architecture will be explained in detail with relating it to deduplication flow in the next chapter.
  
- Components of Sanity Framework: 
+### Components of Sanity Framework 
  
  * **Cloud Object Store** : [Minio](https://min.io/)
  * **Message/Event Buffer**: [Kafka](https://kafka.apache.org/)
