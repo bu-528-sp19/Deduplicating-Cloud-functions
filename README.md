@@ -262,5 +262,5 @@ Minimum acceptance criteria is currently achieved.
 - [Beliz Kaleli](#https://github.com/belizkaleli) 
 - [Paritosh Shirodkar](#https://github.com/paritoshshirodkar)
 - [Vikash Sahu](#https://github.com/vikashsahu4)
-- [Asutosh Patra](#https://github.com/ashriku123)
+- [Asutosh Patra](#https://github.com/ashriku123) 
 
