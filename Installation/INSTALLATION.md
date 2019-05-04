@@ -87,7 +87,7 @@ COPY thumbnail.py ./
 RUN apt-get update
 RUN apt install python3-pip -y
 RUN pip3 install Pillow 
-CMD ["python3", "./generate_thumbnail.py"]
+CMD ["python3", "./thumbnail.py"]
 ```
 
 ##### Create an action called sprint using the Docker file containing the code
