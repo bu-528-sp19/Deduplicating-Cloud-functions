@@ -89,8 +89,8 @@ except ResponseError as err:
 
 ##### Create an action called sprint using thumbnail.py
 ```
-$ wsk -i action create thumbnail thumbnail.py
+$ wsk -i action create sprint thumbnail.py
 ```
 ```
-ok: created action thumbnail
+ok: created action sprint
 ```
