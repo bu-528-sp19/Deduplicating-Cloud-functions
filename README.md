@@ -25,7 +25,7 @@
 ## About
 Deduplication is useful for organizations dealing with highly redundant operations that requires constant copying and storing of data for future reference or recovery purpose. 
 
-The term is explained as an approach that eliminates duplicate copies of data from the system. For instance, a file that is backed up every week results in a lot of duplicate data and thus, eats up considerable disk space. Deduplication run an analysis and eliminates these sets of duplicate data and keeps only what is unique and essential, thus significantly clearing storage space. Here are some benefits of data deduplication for organizations.
+The term is explained as an approach that eliminates duplicate copies of data from the system.Deduplication run an analysis and eliminates these sets of duplicate events and keeps only what is unique and essential, thus significantly clearing compute resources in the cloud. Here are some benefits of event deduplication for organizations.
 
   * Saves execution Time: Running the cloud functions in serverless mode for multiple times for the duplicate data consumes a lot of resources which could be saved otherwise.This allows organizations to have an opportunity to save far more execution of cloud functions. With the advantage of speed, organizations can use the cloud resources effectively.
 
