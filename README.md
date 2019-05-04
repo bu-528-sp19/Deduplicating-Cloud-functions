@@ -19,12 +19,21 @@ With the massive data explosion, technologies that offers approaches to efficien
 The purpose of this project is to design and implement a novel storage de-duplication framework for serverless platform in order to improve overall throughput of the platform.
 
 ** **
-- [asutosh](#asutosh-patra)
+
 - [Vision and Goals Of The Project](#vision-and-goals-of-the-project)
 - [Users/Personas Of The Project](#users/personas-of-the-project)
 - [Scope and Features Of The Project](#scope-and-features-of-the-project)
+- [Solution Concept](#solution-concept)
+    - [Background and Motivation](#background-&-motivation)
+    - [Architecture](#architecture)
+- [Pipleline of De-duplication](#pipleline-of-de-duplication)
+- [Project Video](add link)
+- [Learnings](#learnings)
+- [Acceptance Criteria](#acceptance-criteria)
+- [Future Steps & Limitations](#future-steps-&-limitations)
+- [Release Planning](#release-planning)
+- [References](#references)
 
-## Asutosh Patra
 ## Vision and Goals Of The Project
 
 The final product of this project will be a de-duplication service that leverages application-aware semantic-equivalence to identify duplicate data at storage system and avoids redundant invocation of functions on servers. Main goals include:
@@ -77,7 +86,7 @@ The final product of this project will be a de-duplication service that leverage
 
 ** **
 
-## 4. Solution Concept
+## Solution Concept
 
 ### Background & Motivation
 
@@ -87,7 +96,7 @@ Serverless applications typically have data sources as IoT/sensor data, social m
 
 In the light of the above facts and the distributed storage and server architecture in serverless systems, an opportunity arises to build a specialized data de-duplication service which will de-duplicate the cloud function invocations.
 
-### Architecture of the Framework:
+### Architecture
 
 **Function Types** 
 There are two types of functions in Serverless: Storage closed loop and External Stimuli. External stimuli functions get their input from data store then create external events whereas storage closed loop functions get their input from storage and also write their result to storage. The latter one is our main concern in this project.
@@ -118,7 +127,7 @@ Ideally, we would implement such deduplication inside existing open serverless f
 |:--:| 
 | *Figure 2: Overall Architecture* |
 
-### Pipleline of De-duplication
+## Pipleline of De-duplication
 
 In our architecture, Sanity controller will be the brain of the design. It will be in communication with other components. 
 
@@ -161,14 +170,12 @@ Controller cross-checks the checksum of the incoming data/function for the onlin
 | *Figure 4: Design Flow* |
 
 
-## How a user can run functions on Sanity
+### How a user can run functions on Sanity
 
 We provide a command line interface for Sanity users to easily use our framework. The following command can be used to execute a desired function.
 ```
 sanity --i  <input_bucket> --o <output_bucket>  --f  <function_name> --u <user_name>
 ```
-
-## [Our project video](add link)
 
 ## Learnings
 
@@ -183,7 +190,7 @@ sanity --i  <input_bucket> --o <output_bucket>  --f  <function_name> --u <user_n
 This project was a great learning curve for us as it exposed us to the real problems in the cloud and how we could tackle. Now we know where to start and how to proceed when a problem is given to us.
 
 
-## 5. Acceptance criteria
+## Acceptance criteria
 
 Minimum acceptance criteria are:
 
@@ -193,7 +200,7 @@ Minimum acceptance criteria are:
 
 Minimum acceptance criteria is currently achieved.
 
-## 6. Future Steps & Limitations:
+## Future Steps & Limitations
 
 **Limitations:**
   * Does not handle multiple requests
@@ -208,7 +215,7 @@ Minimum acceptance criteria is currently achieved.
   * Generalize sanity to support multiple serverless platforms
   * Enhancing the deduplication techniques
 
-## 7.  Release Planning:
+## Release Planning
 
 Sprint 1(Due to 2.14): 
   * Familiarize ourselves with Serverless Technology
