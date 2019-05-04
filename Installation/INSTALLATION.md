@@ -11,12 +11,16 @@
 -   Use the above created action name while running CLI as **function name**
 -   Follow [Getting started](#getting-started) for running the sanity
 
+** **
+
 ### Configure
 ##### Ubuntu User
 - [Setup Python](https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-ubuntu-16-04)
 - [Setup and Connect Kafka and Minio](kafka-minio.md)
 - [Setup Couch db](https://github.com/apache/couchdb-docker/blob/master/README.md)
 - [Setup OpenWhisk](https://github.com/apache/incubator-openwhisk/blob/master/ansible/README.md)
+
+** **
 
 ### Getting started
 ##### Install all the Sanity dependencies
