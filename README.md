@@ -158,7 +158,7 @@ In Sanity, each user has their own database document in CouchDB that is hold sep
 }
 ```
 
-|![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/couchdb_user_schema.PNG)|
+|![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/images/couchdb_user_schema.PNG)|
 |:--:| 
 | *Figure 3: CouchDB - Sample User Document* |
 
