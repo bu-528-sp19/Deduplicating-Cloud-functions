@@ -27,15 +27,15 @@ Deduplication is useful for organizations dealing with highly redundant operatio
 
 The term is explained as an approach that eliminates duplicate copies of data from the system. For instance, a file that is backed up every week results in a lot of duplicate data and thus, eats up considerable disk space. Deduplication run an analysis and eliminates these sets of duplicate data and keeps only what is unique and essential, thus significantly clearing storage space. Here are some benefits of data deduplication for organizations.
 
-  * Clears storage space: Running the technique can help reduce storage requirements by up to 80% for backups and files. This allows         organizations save far more data on the same system and extends disk purchase intervals automatically. With the advantage of speed,     organizations can store data to disk cost effectively.
+  * Saves execution Time: Running the cloud functions in serverless mode for multiple times for the duplicate data consumes a lot of resources which could be saved otherwise.This allows organizations to have an opportunity to save far more execution of cloud functions. With the advantage of speed, organizations can use the cloud resources effectively.
 
-  * Adept replication: The deduplication process writes only unique data on the disk and thus, there’s need to replicate only these set     of blocks. Depending on the type of application, the traffic for data replication can be reduced by 90%.
+  * Adept replication: The deduplication process executes only unique data on the disk and thus, there’s need to replicate only these set of blocks. Depending on the type of application, the traffic for event replication can be reduced by 80%.
 
-  * Effective use of network bandwidth: If data deduplication takes place at sources, there’s no need to transmit data over the network,     thus eliminating unwanted use of network bandwidth.
+  * Effective use of network bandwidth: If event deduplication takes place at sources, there’s no need to transmit data over the network,thus eliminating unwanted use of network bandwidth.
 
-  * Cost-effective: As fewer disks are required, storage cost is reduced significantly. Besides, it also tends to improve disaster           recovery as lesser amount of data is transferred.
+  * Cost-effective: As fewer executions of cloud functions are required, computation cost is reduced significantly. 
 
-With the massive data explosion, technologies that offers approaches to efficiently manage it is considered real attractive.Deduplication is one such technology that assist with effectively managing storage devices as it enables efficient usage of data storage and network bandwidth.
+With the massive serverless explosion, technologies that offers approaches to efficiently manage it is considered real attractive.Deduplication is one such technology that assist with effectively managing the resources thus enabling more new tasks to accomodate.
 
 The purpose of this project is to design and implement a novel storage de-duplication framework for serverless platform in order to improve overall throughput of the platform.
 
