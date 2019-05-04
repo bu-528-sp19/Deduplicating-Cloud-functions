@@ -255,12 +255,12 @@ Minimum acceptance criteria is currently achieved.
  * Sanity: The Less Server Architecture for Cloud functions(http://niltonbila.com/pub/Nadgowda-WoSC17.pdf)
 
 ## Mentor
-- [Shripad J Nadgowda](#https://www.linkedin.com/in/shripad-nadgowda-8196949/) (IBM T J Research Center)
+- [Shripad J Nadgowda](https://www.linkedin.com/in/shripad-nadgowda-8196949/) (IBM T J Research Center)
 
 ## Contributors
 
-- [Beliz Kaleli](#https://github.com/belizkaleli) 
-- [Paritosh Shirodkar](#https://github.com/paritoshshirodkar)
-- [Vikash Sahu](#https://github.com/vikashsahu4)
-- [Asutosh Patra](#https://github.com/ashriku123) 
+- [Beliz Kaleli](https://github.com/belizkaleli) 
+- [Paritosh Shirodkar](https://github.com/paritoshshirodkar)
+- [Vikash Sahu](https://github.com/vikashsahu4)
+- [Asutosh Patra](https://github.com/ashriku123) 
 
