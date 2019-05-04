@@ -13,5 +13,5 @@
 - [OpenWhisk](#)
 
 ### Setup
-- [Connect Kafka and Minio](Installation/kafka-minio.md)
+- [Connect Kafka and Minio](kafka-minio.md)
 - [OpenWhisk Setup](#)
