@@ -53,7 +53,7 @@ $ python3 sanity.py --i <INPUT_BUCKET_NAME> --o <OUTPUT_BUCKET_NAME> --f <FUNCTI
 ##### De duplication effect
 ![alt_text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/Installation/4.PNG)
 
-![alt_text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/Installation/1.PNG)
+![alt_text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/Installation/5.PNG)
 ** **
 ### Steps for creating a function in OpenWhisk
 
