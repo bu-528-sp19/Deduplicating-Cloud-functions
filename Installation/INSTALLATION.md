@@ -80,6 +80,16 @@ def main(location):
 
 ##### Create Dockerfile to load the python file and the dependency
 
+```
+FROM ubuntu
+MAINTAINER Name (<email id>)
+COPY thumbnail.py ./
+RUN apt-get update
+RUN apt install python3-pip -y
+RUN pip3 install Pillow 
+CMD ["python3", "./generate_thumbnail.py"]
+```
+
 ##### Create an action called sprint using the Docker file containing the code
 ```
 $ wsk -i action create sprint <docker hub path of the image>
