@@ -5,6 +5,7 @@
 ## Documentation
 - [About](#about)
 - [Installation](Installation/INSTALLATION.md)
+- [Project Video](https://youtube.com)
 - [Vision and Goals Of The Project](#vision-and-goals-of-the-project)
 - [Users/Personas Of The Project](#users/personas-of-the-project)
 - [Scope and Features Of The Project](#scope-and-features-of-the-project)
@@ -20,20 +21,19 @@
 - [References](#references)
 - [Mentor](#mentor)
 - [Contributors](#contributors)
-- [Project Video](https://youtube.com)
 
 ## About
 Deduplication is useful for organizations dealing with highly redundant operations that requires constant copying and storing of data for future reference or recovery purpose. 
 
 The term is explained as an approach that eliminates duplicate copies of data from the system.Deduplication run an analysis and eliminates these sets of duplicate events and keeps only what is unique and essential, thus significantly clearing compute resources in the cloud. Here are some benefits of event deduplication for organizations.
 
-  * Saves execution Time: Running the cloud functions in serverless mode for multiple times for the duplicate data consumes a lot of resources which could be saved otherwise.This allows organizations to have an opportunity to save far more execution of cloud functions. With the advantage of speed, organizations can use the cloud resources effectively.
+  * **Saves execution Time:** Running the cloud functions in serverless mode for multiple times for the duplicate data consumes a lot of resources which could be saved otherwise.This allows organizations to have an opportunity to save far more execution of cloud functions. With the advantage of speed, organizations can use the cloud resources effectively.
 
-  * Adept replication: The deduplication process executes only unique data on the disk and thus, there’s need to replicate only these set of blocks. Depending on the type of application, the traffic for event replication can be reduced by 80%.
+  * **Adept replication:** The deduplication process executes only unique data on the disk and thus, there’s need to replicate only these set of blocks. Depending on the type of application, the traffic for event replication can be reduced by 80%.
 
-  * Effective use of network bandwidth: If event deduplication takes place at sources, there’s no need to transmit data over the network,thus eliminating unwanted use of network bandwidth.
+  * **Effective use of network bandwidth:** If event deduplication takes place at sources, there’s no need to transmit data over the network,thus eliminating unwanted use of network bandwidth.
 
-  * Cost-effective: As fewer executions of cloud functions are required, computation cost is reduced significantly. 
+  * **Cost-effective:** As fewer executions of cloud functions are required, computation cost is reduced significantly. 
 
 With the massive serverless explosion, technologies that offers approaches to efficiently manage it is considered real attractive.Deduplication is one such technology that assist with effectively managing the resources thus enabling more new tasks to accomodate.
 
