@@ -45,23 +45,19 @@ The purpose of this project is to design and implement a novel storage de-duplic
 
 The final product of this project will be a de-duplication service that leverages application-aware semantic-equivalence to identify duplicate data at storage system and avoids redundant invocation of functions on servers. Main goals include:
 
-  * Define and implement specialized data curation techniques
-  * Optimize de-duplication data structure and indexing
-  * Perform data and event de-duplication to avoid redundant execution of stateless functions
-  * Demonstrate the efficiency in performing function deduplication by deduplicating data
+  * Define and implement a framework which would deduplicate the cloud functions 
+  * Perform Event de-duplication to avoid redundant execution of stateless functions
+  * Demonstrate the efficiency in performing function deduplication by implmenting different use case
+  * Build a CLI to accomodate smooth transistion with our framework
+  * Handle multi user accessing our framework  
   
 
 ## Users/Personas Of The Project
 
-**It does not target:**
-
-   * MOC admin users, who will work against the command line.
-   * Administrators of cloud services, who will continue to use the services of serverless functions.
-
 **It targets:**
 
    * Cloud vendors who design their serverless build environement. This will execute stateless functions without worrying internal            details as it saves them money by saving the functions calls in an instance.
-   * Virtual desktop infrastructure (VDI) is another very good candidate for deduplication, because the duplicate data among desktops is      very high
+   * Cloud developers who use stateless functions in their day to day life
 
 ** **
 
@@ -87,7 +83,7 @@ The final product of this project will be a de-duplication service that leverage
 
 **What will not be delivered?**
 
-* This framework does not help save storage space since for every new data coming original data is stored multiple times.**(fix this or delete it)**
+* This framework does not help save storage space since for every unique data coming, data could be multiple for multiple users.**(fix this or delete it)**
 
 * This system can only be implemented on storage closed-loop functions, which takes data from data storage and writes the result again to the data storage. However, external stimuli functions are not the part of this de-duplication design because they take their data from storage but then trigger external events.
 
@@ -201,7 +197,7 @@ This project was a great learning curve for us as it exposed us to the real prob
 
 Minimum acceptance criteria are:
 
-  * To prevent data duplication which in turn would prevent unnecessary function execution.
+  * To build a framework which would deduplicate cloud functions
   * The architecture should able to cater different usecases (Generalizing the architecture)
   * User should interact with the framework through CLI
 
