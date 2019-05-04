@@ -1,11 +1,11 @@
-#Cloud Setup
+# Cloud Setup
 We have created two VM for this process
 
 - **52.xxx.xx.134:** VM on which openwhisk resides
 
 - **52.xxx.xx.131:** VM on which our sanity controller resides
 
-###Background
+### Background
 Openwhisk has already been setup in the 1st VM. Sanity would ideally have all the components(Couchdb, minio and kafka). 
 We have to write actions and triggers to invoke through sanity to perform the cloud functions operations.
 First we need to install wsk cli to configure command line interface for openwhisk.
