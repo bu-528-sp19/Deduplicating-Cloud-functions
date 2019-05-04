@@ -5,7 +5,7 @@
 ## Documentation
 - [About](#about)
 - [Installation](Installation/INSTALLATION.md)
-- [Project Video](https://youtube.com)
+- [Project Video](https://youtu.be/0O_hczNn3UI)
 - [Vision and Goals Of The Project](#vision-and-goals-of-the-project)
 - [Users/Personas Of The Project](#users/personas-of-the-project)
 - [Scope and Features Of The Project](#scope-and-features-of-the-project)
