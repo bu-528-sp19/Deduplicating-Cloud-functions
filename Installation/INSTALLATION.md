@@ -4,8 +4,8 @@
 
 ### Steps
 -   Setup python 3.0 in the first VM
--   Configure Kafka, Minio and Couch db in first VM
--   Configure OpenWhisk in second VM
+-   [Configure](#configure) Kafka, Minio and Couch db in first VM
+-   [Configure](#configure) OpenWhisk in second VM
 -   Connect two VMs.Click [here](Openwhiskvm.md) for the setup
 -   Create a function, you want to deploy in OpenWhisk. Click [here](#steps-for-creating-a-function-in-openWhisk) for the setup
 -   Use the above created action name while running CLI as **function name**
@@ -21,26 +21,26 @@
 ### Getting started
 ##### Install all the Sanity dependencies
 ```
-pip3 install couchdb
-pip3 install docopt
-pip3 install kafka
-pip3 install minio
-pip3 install requests   
+$ pip3 install couchdb
+$ pip3 install docopt
+$ pip3 install kafka
+$ pip3 install minio
+$ pip3 install requests   
 ```
 ##### Clone the Github [Repository](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions.git)
 ```
-git clone https://github.com/bu-528-sp19/Deduplicating-Cloud-functions.git 
+$ git clone https://github.com/bu-528-sp19/Deduplicating-Cloud-functions.git 
 ```
 
 ##### Change the directory
 ```
-cd Deduplicating-Cloud-functions
-cd sanity/final
+$ cd Deduplicating-Cloud-functions
+$ cd sanity/final
 ```
 
 ##### Run the CLI
 ```
-python3 sanity.py --i <INPUT_BUCKET_NAME> --o <OUTPUT_BUCKET_NAME> --f <FUNCTION_NAME> --u <USER NAME>
+$ python3 sanity.py --i <INPUT_BUCKET_NAME> --o <OUTPUT_BUCKET_NAME> --f <FUNCTION_NAME> --u <USER NAME>
 ```
 
 #####
@@ -78,5 +78,3 @@ $ wsk action invoke helloPy --blocking --param name World
 "greeting": "Hello World!"
 }
 ```
-
-
