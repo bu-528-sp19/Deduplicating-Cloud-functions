@@ -157,11 +157,11 @@ Examples above used real names of functions and data however, these are used for
 
 _When unique data comes;_
 
-Incoming data is recorded in a minio bucket. Kafka captures this event and streams for further processing. Sanity Controller gets the necessary info from Kafka stream. Controller cross-checks the checksum of the incoming data/function for the online user with CouchDB. Controller decides that the data is unique (i.e. never used before). Then, controller send invokes Openwhisk function to execute with the unique data. Openwhisk runs the function and generates an output. The output reference (bucket and file name) is saved to CouchDB as the value of the unique data. This process is shown in figure 4 with blue arrows.
+New data comes to minio and gets recorded in a minio bucket. Kafka captures this event and streams to controller for further processing. Sanity Controller gets the necessary info from Kafka stream. Controller cross-checks the checksum of the incoming data/function for the online user with CouchDB. Controller decides that the data is unique (i.e. never used before) since the checksum of incoming data is not present in CouchDB for that specific function. Then, controller invokes Openwhisk to execute the function with the unique data. Openwhisk runs the function and generates an output. The output reference (bucket and file name) is saved to CouchDB as the value of the unique data. This process is shown in figure 4 with blue arrows.
 
 _When duplicate data comes;_
 
-Controller cross-checks the checksum of the incoming data/function for the online user with CouchDB. Controller decides that the data is duplicate (i.e. used before). Then, controller gets the location information of the output data from CouchDB and get the output from related minio bucket in oreder to provide to the user. This process is shown in figure 4 with red arrows.
+New data comes to minio and Kafka notifies Sanity Controller. Controller cross-checks the checksum of the incoming data/function for the online user with CouchDB. Controller decides that the data is duplicate (i.e. used before) since the checksum of incoming data is present in database for that specific function. Then, controller gets the location information of the output data from CouchDB and gets the output from related minio bucket in oreder to provide to the user. This process is shown in figure 4 with red arrows.
 
 |![alt text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/images/final_arch.PNG)|
 |:--:| 
