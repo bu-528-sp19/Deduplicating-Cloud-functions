@@ -42,39 +42,55 @@ $ cd sanity/final
 ```
 $ python3 sanity.py --i <INPUT_BUCKET_NAME> --o <OUTPUT_BUCKET_NAME> --f <FUNCTION_NAME> --u <USER NAME>
 ```
+![alt_text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/Installation/1.png)
+ 
+##### Add one file to the input bucket
+![alt_text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/Installation/2.png)
 
-#####
+##### Unique Data
+![alt_text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/Installation/3.png)
 
+##### De duplication effect
+![alt_text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/Installation/4.png)
+
+![alt_text](https://github.com/bu-528-sp19/Deduplicating-Cloud-functions/blob/master/Installation/5.png)
 ** **
 ### Steps for creating a function in OpenWhisk
 
-##### Create a file named hello.py
+##### Create a file named thumbnail.py
 ```
-def main(dict):
-    if 'name' in dict:
-        name = dict['name']
-    else:
-        name = "stranger"
-    greeting = "Hello " + name + "!"
-    print(greeting)
-    return {"greeting": greeting}
+import sys
+import requests
+from minio import Minio
+import os
+from minio.error import ResponseError
+from PIL import Image
+from json import loads
+
+client = Minio('52.116.33.131:9000',
+               access_key='sanity',
+               secret_key='CloudforAll!',
+               secure=False)
+try:
+    client.fget_object(bucket_name, file_name, 'local.jpg')
+except ResponseError as err:
+    print(err)
+
+im = Image.open('local.jpg')
+im.thumbnail((120,120), Image.ANTIALIAS)
+im.save("thumbnail.jpg")
+print("Thumbnail generated thumbnail.jpg")
+
+try:
+    client.fput_object('test2', 'thumbnail.jpg','thumbnail.jpg')
+except ResponseError as err:
+    print(err)
 ```
 
-##### Create an action called helloPy using hello.py
+##### Create an action called sprint using thumbnail.py
 ```
-$ wsk -i action create helloPy hello.py
+$ wsk -i action create thumbnail thumbnail.py
 ```
 ```
-ok: created action helloPy
-```
-
-##### Invoke the helloPy action using command-line parameters
-```
-$ wsk action invoke helloPy --blocking --param name World
-```
-
-```
-{
-"greeting": "Hello World!"
-}
+ok: created action thumbnail
 ```
