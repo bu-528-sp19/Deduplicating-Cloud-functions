@@ -14,4 +14,4 @@
 
 ### Setup
 - [Connect Kafka and Minio](kafka-minio.md)
-- [OpenWhisk Setup](#)
+- [OpenWhisk Setup](https://github.com/apache/incubator-openwhisk/blob/master/ansible/README.md)
