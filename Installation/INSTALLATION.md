@@ -7,6 +7,7 @@
 -   Configure Kafka, Minio and Couch db in first VM
 -   Configure OpenWhisk in second VM
 -   Connect two VMs.Click [here](Openwhiskvm.md) for the setup
+-   Create a function, you want to deploy in OpenWhisk. Click [here](#steps-for-creating-a-function-in-openWhisk) for the setup
 
 ### Configure
 ##### Ubuntu User
@@ -40,4 +41,38 @@ python3 sanity.py --i <INPUT_BUCKET_NAME> --o <OUTPUT_BUCKET_NAME> --f <FUNCTION
 ```
 
 #####
+
+### Steps for creating a function in OpenWhisk
+
+##### Create a file named hello.py
+```
+def main(dict):
+    if 'name' in dict:
+        name = dict['name']
+    else:
+        name = "stranger"
+    greeting = "Hello " + name + "!"
+    print(greeting)
+    return {"greeting": greeting}
+```
+
+##### Create an action called helloPy using hello.py
+```
+$ wsk -i action create helloPy hello.py
+```
+```
+ok: created action helloPy
+```
+
+##### Invoke the helloPy action using command-line parameters
+```
+$ wsk action invoke helloPy --blocking --param name World
+```
+
+```
+{
+"greeting": "Hello World!"
+}
+```
+
 
